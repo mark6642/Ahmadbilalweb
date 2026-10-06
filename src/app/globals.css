@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #ffffff;
+  --bg-alt: #f8fafc;
+  --bg-card: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-accent: rgba(37, 99, 235, 0.3);
+  
+  --accent-primary: #2563eb;
+  --accent-secondary: #4f46e5;
+  --accent-cyan: #0ea5e9;
+  --accent-emerald: #059669;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+}
+
+@theme {
+  --color-main-bg: var(--bg-main);
+  --color-card-bg: var(--bg-card);
+  --color-subtle-border: var(--border-subtle);
+  --color-ai-blue: var(--accent-primary);
+  --color-ai-indigo: var(--accent-secondary);
+  --color-ai-cyan: var(--accent-cyan);
+  --color-ai-emerald: var(--accent-emerald);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  selection-background-color: rgba(37, 99, 235, 0.15);
+  selection-color: #1d4ed8;
+}
+
+/* Ambient Subtle Mesh Backdrop for Light Mode */
+.ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glow-orb-1 {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(99, 102, 241, 0.03) 45%, transparent 70%);
+  filter: blur(80px);
+}
+
+.glow-orb-2 {
+  position: absolute;
+  top: 35%;
+  right: -10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 65%);
+  filter: blur(90px);
+}
+
+.glow-orb-3 {
+  position: absolute;
+  top: 70%;
+  left: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.05) 0%, transparent 65%);
+  filter: blur(90px);
+}
+
+/* Subtle Modern Light Grid */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+}
+
+/* Premium Light Glassmorphism Cards */
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Gradient Text Effects for White Theme */
+.gradient-text {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-ai {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-growth {
+  background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* High-Converting Glowing Primary Button with Shimmer */
+.btn-primary-glow {
+  position: relative;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.btn-primary-glow:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  box-shadow: 0 14px 35px -4px rgba(37, 99, 235, 0.65), 0 0 20px 2px rgba(59, 130, 246, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px) scale(1.015);
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 80%
+  );
+  transform: rotate(25deg);
+  animation: shimmerSweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  35%, 100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.glass-badge-interactive {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-badge-interactive:hover {
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 8px 25px -2px rgba(37, 99, 235, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Pulse Beacon for Live Badges */
+@keyframes beaconPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.pulse-beacon {
+  animation: beaconPulse 2s infinite;
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth custom scrollbar for light mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

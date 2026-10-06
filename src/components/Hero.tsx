@@ -4,14 +4,17 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { 
   ArrowRight, Play, TrendingUp, Megaphone, Globe, 
-  ShieldCheck, Zap, Users, Star, CheckCircle2,
-  MousePointerClick, BarChart3
+  ShieldCheck, Zap, Star, CheckCircle2,
+  MousePointerClick, Sparkles, DollarSign
 } from "lucide-react";
 
 // WhatsApp Contact Configuration
 // Tip: Yahan apna WhatsApp number daalein (country code k sath, bina '+' ya space k, eg: "923001234567")
 const WHATSAPP_NUMBER = "923000000000"; 
 const WHATSAPP_MESSAGE = "Hi Ahmad Bilal, I am interested in your agency services and would like to discuss a project.";
+
+// Typewriter Animation Words
+const ANIMATED_WORDS = ["Bigger Growth.", "Higher Revenue.", "Viral Reach.", "Top Rankings."];
 
 function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -30,7 +33,6 @@ export default function Hero() {
   const [isMounted, setIsMounted] = useState(false);
 
   // Typewriter Animation State
-  const animatedWords = ["Bigger Growth.", "Higher Revenue.", "Viral Reach.", "Top Rankings."];
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -43,7 +45,7 @@ export default function Hero() {
     if (!isMounted) return;
 
     const timer = setTimeout(() => {
-      const currentWord = animatedWords[wordIndex];
+      const currentWord = ANIMATED_WORDS[wordIndex];
       
       if (!isDeleting) {
         setText(currentWord.substring(0, text.length + 1));
@@ -56,7 +58,7 @@ export default function Hero() {
         setText(currentWord.substring(0, text.length - 1));
         if (text === "") {
           setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % animatedWords.length);
+          setWordIndex((prev) => (prev + 1) % ANIMATED_WORDS.length);
           return;
         }
       }
@@ -68,262 +70,363 @@ export default function Hero() {
   if (!isMounted) return null;
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#f8fafc] font-sans pt-28 lg:pt-24 pb-12 lg:pb-8">
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#f8fafc] font-sans pt-26 lg:pt-22 pb-12 lg:pb-8">
       
       {/* =========================================
-          BACKGROUND: VISIBLE IMAGE + MESH
+          BACKGROUND: CLEAN ABSTRACT LIGHTING & MESH (NO IMAGE)
           ========================================= */}
       <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Soft ambient lighting glows */}
+        <div className="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] bg-blue-400/15 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[15%] left-[-5%] w-[40vw] h-[40vw] bg-purple-400/15 rounded-full blur-[120px]" />
+        <div className="absolute top-[20%] left-[30%] w-[35vw] h-[35vw] bg-cyan-400/10 rounded-full blur-[120px]" />
         
-        {/* Transparent Image of person using computer (Opacity increased to make it visible) */}
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2850&auto=format&fit=crop" 
-            alt="Agency working on computers"
-            className="w-full h-full object-cover opacity-[0.18]" 
-          />
-          {/* Gradients to keep the text readable while image is visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/60 to-[#f8fafc]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f8fafc]/90 lg:from-[#f8fafc]/80 via-transparent to-[#f8fafc]/90 lg:to-[#f8fafc]/80" />
-        </div>
-
-        {/* Soft abstract lighting */}
-        <div className="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-blue-400/20 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[20%] right-[20%] w-[35vw] h-[35vw] bg-purple-400/20 rounded-full blur-[100px]"></div>
-        
-        {/* Subtle dot grid for tech feel */}
+        {/* Subtle dot grid for clean tech feel */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
 
       {/* =========================================
-          MAIN HERO CONTENT (RESPONSIVE GRID)
+          MAIN WIDESCREEN HERO CANVAS (EXTRA DISTANCE)
           ========================================= */}
-      <div className="relative z-10 container mx-auto px-5 lg:px-6 max-w-7xl flex-1 flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
+      <div className="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex-1 flex flex-col justify-center items-center py-6 lg:py-12">
         
-        {/* LEFT COLUMN: TEXT & CTAS */}
-        <div className="flex-1 flex flex-col items-start text-left w-full">
+        {/* HERO WRAPPER WITH ORBITAL STAGGERED ALIGNMENT */}
+        <div className="relative w-full flex flex-col items-center justify-center min-h-[620px] lg:min-h-[700px]">
+
+          {/* ========================================================
+              LEFT COLUMN: 4 FLOATING CARDS (STAGGERED ORBITAL ALIGNMENT)
+              ======================================================== */}
           
-          {/* Top Pill */}
+          {/* Card 1: Top-Left (Tilted gently, inset top corner) */}
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/80 backdrop-blur-sm border border-blue-100 mb-6 shadow-sm"
+            animate={{ y: [0, -12, 0], x: [0, 4, 0] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+            className="hidden lg:flex items-center gap-2.5 absolute top-2 left-2 xl:left-6 2xl:left-12 -rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(17,110,240,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
-            <span className="text-blue-500">✨</span>
-            <span className="text-xs sm:text-sm font-semibold text-blue-700">
-              Your Growth Partner in the Digital World
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#116ef0] to-indigo-600 text-white font-bold flex items-center justify-center shrink-0 shadow-sm text-xs">
+              SJ
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Sarah Jenkins</span>
+                <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">✓ Verified</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-snug">
+                &ldquo;Leads grew by <span className="font-bold text-[#116ef0]">+320%</span> in 30 days! 🔥&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Upper-Mid-Left (Swung further outward to the left edge) */}
+          <motion.div 
+            animate={{ y: [0, -10, 0], x: [0, -4, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -left-3 xl:left-0 2xl:left-6 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-blue-50 shadow-[0_14px_36px_rgba(17,110,240,0.11)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <div className="relative shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-sm">
+                <WhatsAppIcon className="w-3.5 h-3.5 fill-white" />
+              </div>
+              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full animate-ping" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Client Inbound</span>
+                <span className="text-[9px] text-slate-400">Just now</span>
+              </div>
+              <p className="text-[10px] text-slate-700 font-medium leading-snug">
+                &ldquo;Hi Ahmad! Ready to start the $5K project.&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 3: Lower-Mid-Left (Tucked slightly inward towards bottom center) */}
+          <motion.div 
+            animate={{ y: [0, 11, 0], x: [0, 4, 0] }}
+            transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="hidden xl:flex items-center gap-2.5 absolute top-[55%] left-3 xl:left-8 2xl:left-14 -rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-emerald-50 shadow-[0_12px_32px_rgba(16,185,129,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <DollarSign className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Revenue Milestone</span>
+                <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">+340%</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-snug">
+                &ldquo;<span className="font-bold text-slate-900">$48,500</span> in new client sales! 💰&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Bottom-Left (Swung outward at bottom corner) */}
+          <motion.div 
+            animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
+            transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+            className="hidden lg:flex items-center gap-2 absolute bottom-2 left-0 xl:left-2 2xl:left-8 rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-blue-100/80 shadow-[0_10px_28px_rgba(17,110,240,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#116ef0] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#116ef0]"></span>
+            </span>
+            <span className="text-[10.5px] font-bold text-slate-800 whitespace-nowrap">
+              ⚡ 24 Discovery Calls Booked
             </span>
           </motion.div>
 
-          {/* Headline (Responsive min-height to fix layout jumps) */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-slate-900 leading-[1.15] lg:leading-[1.05] mb-4 lg:mb-6 min-h-[140px] sm:min-h-[160px] lg:min-h-[220px]"
+          {/* ========================================================
+              RIGHT COLUMN: 4 FLOATING CARDS (STAGGERED ORBITAL ALIGNMENT)
+              ======================================================== */}
+          
+          {/* Card 5: Top-Right (Tilted gently, inset top corner) */}
+          <motion.div 
+            animate={{ y: [0, 12, 0], x: [0, -5, 0] }}
+            transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            className="hidden lg:flex items-center gap-2.5 absolute top-2 right-2 xl:right-6 2xl:right-12 rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
-            More Leads. <br />
-            Stronger Brands. <br />
-            <span className="inline-flex items-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                {text}
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <Zap className="w-3.5 h-3.5 fill-white text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Marcus Reed</span>
+                <span className="text-[9px] text-slate-400">Founder</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-snug">
+                &ldquo;Site launched in <span className="font-bold text-purple-600">5 days</span>. Great ROI! 🚀&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 6: Upper-Mid-Right (Swung further outward to the right edge) */}
+          <motion.div 
+            animate={{ y: [0, 9, 0], x: [0, 5, 0] }}
+            transition={{ duration: 5.0, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
+            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -right-3 xl:right-0 2xl:right-6 -rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100 shadow-[0_14px_36px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <TrendingUp className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Organic SEO Surge</span>
+                <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">+185%</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-snug">
+                &ldquo;Ranked #1 on Google for all key targets! 📈&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 7: Lower-Mid-Right (Tucked slightly inward towards bottom center) */}
+          <motion.div 
+            animate={{ y: [0, -10, 0], x: [0, -4, 0] }}
+            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="hidden xl:flex items-center gap-2.5 absolute top-[55%] right-3 xl:right-8 2xl:right-14 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-amber-50 shadow-[0_12px_32px_rgba(245,158,11,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <Sparkles className="w-4 h-4 fill-white text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="text-[11px] font-bold text-slate-900">Campaign ROAS</span>
+                <span className="text-[9px] text-amber-600 font-bold bg-amber-50 px-1 rounded">4.9x ROI</span>
+              </div>
+              <p className="text-[10px] text-slate-600 leading-snug">
+                &ldquo;Ad returns scaled to <span className="font-bold text-slate-900">4.9x</span> with Ahmad! 🎯&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 8: Bottom-Right (Swung outward at bottom corner) */}
+          <motion.div 
+            animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            className="hidden lg:flex items-center gap-2 absolute bottom-2 right-0 xl:right-2 2xl:right-8 -rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-amber-100/80 shadow-[0_10px_28px_rgba(245,158,11,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+          >
+            <div className="flex text-amber-400">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+            </div>
+            <span className="text-[10.5px] font-bold text-slate-800 whitespace-nowrap">
+              5.0 Star Agency Rating
+            </span>
+          </motion.div>
+
+          {/* Ambient Frosted Floating Bubbles */}
+          <motion.div
+            animate={{ y: [-10, 10, -10], x: [-6, 6, -6], scale: [1, 1.05, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="hidden lg:block absolute -top-6 left-[22%] w-8 h-8 rounded-full bg-blue-400/10 backdrop-blur-md border border-white/80 shadow-sm pointer-events-none z-10"
+          />
+          <motion.div
+            animate={{ y: [8, -8, 8], x: [5, -5, 5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="hidden lg:block absolute -bottom-4 right-[22%] w-8 h-8 rounded-full bg-purple-400/10 backdrop-blur-md border border-white/80 shadow-sm pointer-events-none z-10"
+          />
+
+          {/* ========================================================
+              CENTERED HERO CONTENT (TIGHT CENTER + HUGE DISTANCE)
+              ======================================================== */}
+          <div className="relative z-10 w-full max-w-lg sm:max-w-xl mx-auto flex flex-col items-center text-center px-4 sm:px-6 py-6 lg:py-10">
+            
+            {/* Top Pill */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 backdrop-blur-sm border border-blue-100 mb-5 shadow-sm"
+            >
+              <span className="text-blue-500 text-xs">✨</span>
+              <span className="text-xs font-semibold text-blue-700">
+                Your Growth Partner in the Digital World
               </span>
-              <span className="w-1 lg:w-1.5 h-8 sm:h-10 lg:h-16 bg-purple-500 ml-1.5 animate-pulse rounded-full opacity-70" />
-            </span>
-          </motion.h1>
+            </motion.div>
 
-          {/* Subtext */}
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-sm sm:text-base lg:text-lg text-slate-700 font-medium max-w-xl mb-8 leading-relaxed"
-          >
-            We help businesses generate high-quality leads, grow their online presence with strategic digital marketing, and build modern, high-performing websites.
-          </motion.p>
-
-          {/* Mini Services Row (Responsive wrapping) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-wrap items-center gap-3 sm:gap-5 mb-10 w-full"
-          >
-            <div className="flex items-center gap-2 sm:gap-3 bg-white/50 backdrop-blur-md pr-4 py-1.5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="w-8 sm:w-10 h-8 sm:h-10 ml-1.5 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20">
-                <MousePointerClick className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">Lead Generation</span>
-                <span className="text-[9px] sm:text-[10px] text-slate-500">Quality Leads. Real Results.</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 sm:gap-3 bg-white/50 backdrop-blur-md pr-4 py-1.5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="w-8 sm:w-10 h-8 sm:h-10 ml-1.5 rounded-lg bg-indigo-500 flex items-center justify-center shadow-md shadow-indigo-500/20">
-                <Megaphone className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">Digital Marketing</span>
-                <span className="text-[9px] sm:text-[10px] text-slate-500">More Reach. More Sales.</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 sm:gap-3 bg-white/50 backdrop-blur-md pr-4 py-1.5 rounded-xl border border-slate-100 shadow-sm">
-              <div className="w-8 sm:w-10 h-8 sm:h-10 ml-1.5 rounded-lg bg-purple-500 flex items-center justify-center shadow-md shadow-purple-500/20">
-                <Globe className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">Web Development</span>
-                <span className="text-[9px] sm:text-[10px] text-slate-500">Fast. Modern. Scalable.</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
-          >
-            {/* Primary Action: Start Project */}
-            <a 
-              href="#book-call"
-              className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
+            {/* Main Headline */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold tracking-tight text-slate-900 leading-[1.14] mb-5 max-w-lg sm:max-w-xl min-h-[110px] sm:min-h-[130px] lg:min-h-[160px]"
             >
-              <span>Start Your Project</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            {/* WhatsApp CTA Button */}
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-              className="w-full sm:w-auto px-6 py-3.5 sm:py-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm shadow-md hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer"
-            >
-              <WhatsAppIcon className="w-4 h-4 fill-current transition-transform group-hover:scale-110" />
-              <span>Chat on WhatsApp</span>
-            </a>
-            
-            {/* Secondary Action */}
-            <a
-              href="#process"
-              className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-full bg-white/80 backdrop-blur-md text-slate-800 font-bold text-sm border border-slate-200 hover:border-slate-300 hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm cursor-pointer"
-            >
-              <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                <Play className="w-3 h-3 text-slate-700 group-hover:text-blue-600 ml-0.5" />
-              </div>
-              <span>Watch Our Story</span>
-            </a>
-          </motion.div>
-        </div>
-
-        {/* RIGHT COLUMN: RESPONSIVE FLOATING DASHBOARD CARDS */}
-        {/* On mobile: flex-col stack, On desktop: absolute floating */}
-        <div className="flex-1 w-full lg:h-[600px] flex flex-col lg:block items-center justify-center mt-12 lg:mt-0 perspective-1000 z-20">
-          
-          <div className="relative w-full max-w-sm lg:max-w-lg mx-auto flex flex-col gap-6 lg:block h-full">
-            
-            {/* Card 1: Qualified Leads */}
-            <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative lg:absolute lg:top-8 lg:-left-4 w-full lg:w-64 bg-white/90 backdrop-blur-2xl border border-white rounded-2xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-20 mx-auto"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Users className="w-4 h-4 text-blue-600" />
-                </div>
-                <span className="text-sm font-semibold text-slate-700">Qualified Leads</span>
-              </div>
-              <div className="flex items-end gap-3 mb-2">
-                <h3 className="text-3xl font-bold text-slate-900">2,842</h3>
-                <span className="text-xs font-bold text-emerald-500 mb-1 flex items-center">
-                  ↑ 128%
+              More Leads. Stronger Brands. <br />
+              <span className="inline-flex items-center justify-center mt-1">
+                <span className="text-[#116ef0]">
+                  {text}
                 </span>
+                <span className="w-1 lg:w-1.5 h-7 sm:h-9 lg:h-11 bg-[#116ef0] ml-1.5 animate-pulse rounded-full opacity-80" />
+              </span>
+            </motion.h1>
+
+            {/* Centered Subtext */}
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xs sm:text-sm lg:text-base text-slate-600 font-medium max-w-md mx-auto mb-8 leading-relaxed"
+            >
+              We help ambitious businesses generate high-quality leads, scale their online presence with strategic digital marketing, and build modern, high-converting websites.
+            </motion.p>
+
+            {/* Mini Services Pill Row (Centered) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 w-full max-w-lg"
+            >
+              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
+                <div className="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
+                  <MousePointerClick className="w-3 h-3 text-white" />
+                </div>
+                <div className="text-left">
+                  <span className="block text-xs font-bold text-slate-900 leading-tight">Lead Generation</span>
+                  <span className="text-[9px] text-slate-500">Quality Leads</span>
+                </div>
               </div>
-              <div className="w-full h-10 flex items-end gap-1 opacity-80 mt-2">
-                {[15, 25, 20, 40, 30, 50, 40, 60, 55, 80].map((h, i) => (
-                  <div key={i} className="flex-1 bg-blue-500 rounded-t-sm" style={{ height: `${h}%` }} />
-                ))}
+
+              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
+                <div className="w-6 h-6 rounded-lg bg-indigo-500 flex items-center justify-center shadow-sm">
+                  <Megaphone className="w-3 h-3 text-white" />
+                </div>
+                <div className="text-left">
+                  <span className="block text-xs font-bold text-slate-900 leading-tight">Digital Marketing</span>
+                  <span className="text-[9px] text-slate-500">More Reach</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
+                <div className="w-6 h-6 rounded-lg bg-purple-500 flex items-center justify-center shadow-sm">
+                  <Globe className="w-3 h-3 text-white" />
+                </div>
+                <div className="text-left">
+                  <span className="block text-xs font-bold text-slate-900 leading-tight">Web Development</span>
+                  <span className="text-[9px] text-slate-500">Fast & Scalable</span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Card 2: Your Growth (Main) */}
+            {/* ENHANCED & COMPACT ACTION BUTTONS */}
             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="relative lg:absolute lg:top-32 lg:-right-6 w-full lg:w-72 bg-white/95 backdrop-blur-2xl border border-white rounded-3xl p-6 shadow-[0_16px_48px_rgba(0,0,0,0.12)] z-30 mx-auto"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto mb-7"
             >
-              <h3 className="text-sm font-semibold text-slate-500 mb-6">Your Growth</h3>
+              {/* Primary Action: Start Project */}
+              <a 
+                href="#book-call"
+                className="relative group px-5 py-2.5 rounded-full bg-gradient-to-r from-[#116ef0] via-blue-600 to-indigo-600 text-white font-bold text-xs sm:text-[13px] border border-white/20 shadow-[0_4px_16px_rgba(17,110,240,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_22px_rgba(17,110,240,0.5),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Start Your Project</span>
+                <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+                  <ArrowRight className="w-2.5 h-2.5 text-white" />
+                </div>
+              </a>
+
+              {/* WhatsApp CTA Button */}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="group px-4.5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-[13px] border border-white/20 shadow-[0_4px_14px_rgba(37,211,102,0.3),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" />
+                <span>Chat on WhatsApp</span>
+              </a>
               
-              <div className="flex flex-row items-center justify-between sm:justify-start sm:gap-6">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center shrink-0">
-                  <svg className="w-full h-full transform -rotate-90">
-                    <circle cx="50%" cy="50%" r="35" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-slate-100" />
-                    <circle cx="50%" cy="50%" r="35" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray="220" strokeDashoffset="50" className="text-blue-600" strokeLinecap="round" />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center mt-1">
-                    <span className="text-lg sm:text-xl font-black text-slate-900">+320%</span>
-                  </div>
+              {/* Secondary Action */}
+              <a
+                href="#process"
+                className="group px-4.5 py-2.5 rounded-full bg-white/90 hover:bg-white text-slate-800 font-bold text-xs sm:text-[13px] border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:shadow-[0_4px_14px_rgba(15,23,42,0.08)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <div className="w-4 h-4 rounded-full bg-slate-100 group-hover:bg-blue-50 flex items-center justify-center transition-colors">
+                  <Play className="w-2 h-2 text-slate-700 group-hover:text-blue-600 fill-slate-700 group-hover:fill-blue-600 ml-0.5" />
                 </div>
+                <span>Watch Our Story</span>
+              </a>
+            </motion.div>
 
-                <div className="flex flex-col gap-2.5">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
-                    </div>
-                    <span className="text-xs font-semibold text-slate-700">More Leads</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
-                    </div>
-                    <span className="text-xs font-semibold text-slate-700">Higher Traffic</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
-                    </div>
-                    <span className="text-xs font-semibold text-slate-700">Better Sales</span>
-                  </div>
+            {/* Social Proof Pill (Centered below CTAs) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex items-center justify-center gap-2 text-[11px] text-slate-600"
+            >
+              <div className="flex -space-x-1.5">
+                <span className="w-5 h-5 rounded-full border-2 border-white bg-blue-600 text-white font-bold flex items-center justify-center text-[8px]">A</span>
+                <span className="w-5 h-5 rounded-full border-2 border-white bg-indigo-600 text-white font-bold flex items-center justify-center text-[8px]">M</span>
+                <span className="w-5 h-5 rounded-full border-2 border-white bg-purple-600 text-white font-bold flex items-center justify-center text-[8px]">S</span>
+                <span className="w-5 h-5 rounded-full border-2 border-white bg-emerald-600 text-white font-bold flex items-center justify-center text-[8px]">R</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="flex text-amber-400 text-[10px]">
+                  ★★★★★
                 </div>
+                <span className="font-bold text-slate-800">4.9/5 Rating</span>
+                <span className="text-slate-400">•</span>
+                <span className="text-slate-500 font-medium">50+ Projects</span>
               </div>
             </motion.div>
 
-            {/* Card 3: Website Traffic */}
+            {/* Mobile-Only Floating Highlight Banner */}
             <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="relative lg:absolute lg:bottom-12 lg:left-4 w-full lg:w-60 bg-white/90 backdrop-blur-2xl border border-white rounded-2xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-20 mx-auto"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="lg:hidden mt-5 flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-800"
             >
-               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <BarChart3 className="w-4 h-4 text-purple-600" />
-                </div>
-                <span className="text-sm font-semibold text-slate-700">Website Traffic</span>
-              </div>
-              <div className="flex items-end gap-3 mb-2">
-                <h3 className="text-3xl font-bold text-slate-900">125K</h3>
-                <span className="text-xs font-bold text-emerald-500 mb-1 flex items-center">
-                  ↑ 95%
-                </span>
-              </div>
-              <div className="w-full h-10 mt-2 relative overflow-hidden">
-                <svg viewBox="0 0 100 40" className="w-full h-full preserve-3d">
-                  <path d="M0 40 Q 10 30, 20 20 T 40 25 T 60 10 T 80 15 T 100 0 L 100 40 Z" fill="url(#gradient)" opacity="0.2" />
-                  <path d="M0 40 Q 10 30, 20 20 T 40 25 T 60 10 T 80 15 T 100 0" fill="none" stroke="#8b5cf6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <defs>
-                    <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#8b5cf6" stopOpacity="1" />
-                      <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>🔥 24+ Leads Booked This Week</span>
             </motion.div>
 
           </div>
@@ -333,7 +436,7 @@ export default function Hero() {
       {/* =========================================
           BOTTOM STRIP: 4 TRUST FEATURES
           ========================================= */}
-      <div className="relative z-10 container mx-auto px-5 lg:px-6 max-w-7xl mt-16 border-t border-slate-200/60 pt-8 pb-4">
+      <div className="relative z-10 container mx-auto px-5 lg:px-6 max-w-7xl mt-8 border-t border-slate-200/60 pt-7 pb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 text-left">
           
           <div className="flex items-start gap-4 p-4 sm:p-0 bg-white/50 sm:bg-transparent rounded-2xl sm:rounded-none border border-slate-100 sm:border-none shadow-sm sm:shadow-none">
@@ -358,7 +461,7 @@ export default function Hero() {
 
           <div className="flex items-start gap-4 p-4 sm:p-0 bg-white/50 sm:bg-transparent rounded-2xl sm:rounded-none border border-slate-100 sm:border-none shadow-sm sm:shadow-none">
             <div className="p-2 rounded-full border border-slate-200 bg-white shadow-sm shrink-0">
-              <Users className="w-5 h-5 text-cyan-500" />
+              <CheckCircle2 className="w-5 h-5 text-cyan-500" />
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-900 mb-1">Expert Team</h4>

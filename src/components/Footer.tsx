@@ -1,15 +1,19 @@
 "use client";
 
-import { ArrowUp, Mail } from "lucide-react";
+import { useState } from "react";
+import { ArrowUp, Mail, Copy, Check } from "lucide-react";
 import AismaLogo from "./AismaLogo";
 
+// ✦ Direct Contact Email:
+// Yahan apna Email address add ya update karein:
+const CONTACT_EMAIL = " aisalesmarketinga@gmail.com";
+
 // ✦ Elite Social Media Links Configuration
-// Aap yahan aasani se apne Facebook, Instagram aur LinkedIn ke real URLs daal sakte hain:
+// Aap yahan aasani se apne Facebook, Instagram, LinkedIn aur Twitter (X) ke URLs update kar sakte hain:
 const SOCIAL_LINKS = [
   {
     name: "Facebook",
-    // Yahan apna Facebook profile ya page link daalain (e.g. "https://facebook.com/your-page"):
-    href: "#",
+    href: "https://www.facebook.com/people/AISMA/61595011714748/",
     label: "Follow us on Facebook",
     brandColor: "#1877F2",
     hoverStyles:
@@ -22,8 +26,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: "Instagram",
-    // Yahan apna Instagram profile link daalain (e.g. "https://instagram.com/your-username"):
-    href: "#",
+    href: "https://www.instagram.com/aisalesmarketingagency/",
     label: "Follow us on Instagram",
     brandColor: "#E4405F",
     hoverStyles:
@@ -36,8 +39,8 @@ const SOCIAL_LINKS = [
   },
   {
     name: "LinkedIn",
-    // Yahan apna LinkedIn profile link daalain (e.g. "https://linkedin.com/in/your-profile"):
-    href: "#",
+    // Yahan apna LinkedIn profile link daalain:
+    href: "https://linkedin.com/in/your-profile",
     label: "Follow us on LinkedIn",
     brandColor: "#0A66C2",
     hoverStyles:
@@ -48,9 +51,36 @@ const SOCIAL_LINKS = [
       </svg>
     ),
   },
+  {
+    name: "X (Twitter)",
+    // Yahan apna Twitter / X profile link daalain:
+    href: "https://x.com/AISMAOutreach",
+    label: "Follow us on X (Twitter)",
+    brandColor: "#0f172a",
+    hoverStyles:
+      "hover:text-black hover:border-slate-800/40 hover:bg-slate-100 hover:shadow-[0_10px_22px_-4px_rgba(15,23,42,0.25)]",
+    icon: (
+      <svg className="h-4 w-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -60,8 +90,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
           
-          {/* Brand info (5 Cols) */}
-          <div className="md:col-span-5 space-y-4">
+          {/* Brand info (4 Cols) */}
+          <div className="md:col-span-4 space-y-4">
             <AismaLogo size="md" />
 
             <p className="text-sm text-slate-600 max-w-sm leading-relaxed mt-3">
@@ -127,25 +157,54 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Direct Contact (2 Cols) */}
-          <div className="md:col-span-2 space-y-3.5">
+          {/* Direct Contact (3 Cols) */}
+          <div className="md:col-span-3 space-y-3.5">
             <h4 className="text-xs font-mono uppercase tracking-widest text-slate-900 font-bold">
               Direct Contact
             </h4>
-            <a
-              href="mailto:contact@ahmadbilal.ai"
-              className="text-xs font-mono font-semibold text-slate-700 hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
-            >
-              <Mail className="h-3.5 w-3.5 text-blue-600 group-hover:scale-110 transition-transform" />
-              <span>contact@ahmadbilal.ai</span>
-            </a>
+
+            {/* Interactive Working Email (mailto + Copy-to-clipboard) */}
+            <div className="flex items-center gap-1.5 p-1.5 pl-2.5 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-blue-400/50 transition-all max-w-fit group">
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=Inquiry%20from%20Website&body=Hi%20Ahmad,%0A%0AI%20would%20like%20to%20discuss%20a%20project...`}
+                className="text-xs font-mono font-semibold text-slate-700 hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 truncate"
+                title="Click to compose email"
+              >
+                <Mail className="h-3.5 w-3.5 text-blue-600 shrink-0 group-hover:scale-110 transition-transform" />
+                <span>{CONTACT_EMAIL}</span>
+              </a>
+
+              <div className="h-3.5 w-px bg-slate-200 mx-0.5" />
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="relative p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all cursor-pointer active:scale-90"
+                aria-label="Copy email"
+                title={copied ? "Copied!" : "Copy email address"}
+              >
+                {copied ? (
+                  <Check className="h-3.5 w-3.5 text-emerald-600" />
+                ) : (
+                  <Copy className="h-3.5 w-3.5" />
+                )}
+
+                {/* Copied Feedback Badge */}
+                {copied && (
+                  <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[10px] font-mono font-bold text-white bg-emerald-600 rounded shadow-md whitespace-nowrap z-30">
+                    Copied!
+                    <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-emerald-600" />
+                  </span>
+                )}
+              </button>
+            </div>
 
             {/* Elite Social Media Links */}
             <div className="pt-2">
               <span className="block text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2.5">
                 Social Presence
               </span>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 flex-wrap">
                 {SOCIAL_LINKS.map((social) => {
                   const isExternal = social.href.startsWith("http");
                   return (

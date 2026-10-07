@@ -15,7 +15,7 @@ export default function TrustMarquee() {
   ];
 
   return (
-    <div className="w-full border-y border-slate-200/80 bg-slate-50/80 py-8 overflow-hidden">
+    <div id="industries" className="w-full border-y border-slate-200/80 bg-slate-50/80 py-8 overflow-hidden relative scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6 text-center mb-6">
         <p className="text-xs uppercase tracking-widest text-slate-500 font-bold font-mono">
           Powered By Industry-Leading AI, Web & Lead Generation Infrastructure

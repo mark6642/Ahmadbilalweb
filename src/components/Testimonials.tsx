@@ -77,9 +77,10 @@ export default function Testimonials() {
 
   return (
     <section 
-      id="testimonials" 
+      id="reviews" 
       className="relative py-20 lg:py-28 bg-white border-t border-slate-100 overflow-hidden"
     >
+      <div id="testimonials" className="absolute -top-24" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 mb-12 sm:mb-16">
         
         {/* Centered Clean Header */}

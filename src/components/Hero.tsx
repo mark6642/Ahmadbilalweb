@@ -70,7 +70,7 @@ export default function Hero() {
   if (!isMounted) return null;
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#f8fafc] font-sans pt-26 lg:pt-22 pb-12 lg:pb-8">
+    <section id="home" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#f8fafc] font-sans pt-14 sm:pt-16 lg:pt-16 pb-8 lg:pb-6">
       
       {/* =========================================
           BACKGROUND: CLEAN ABSTRACT LIGHTING & MESH (NO IMAGE)
@@ -88,10 +88,10 @@ export default function Hero() {
       {/* =========================================
           MAIN WIDESCREEN HERO CANVAS (EXTRA DISTANCE)
           ========================================= */}
-      <div className="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex-1 flex flex-col justify-center items-center py-6 lg:py-12">
+      <div className="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex-1 flex flex-col justify-center items-center py-2 lg:py-4">
         
         {/* HERO WRAPPER WITH ORBITAL STAGGERED ALIGNMENT */}
-        <div className="relative w-full flex flex-col items-center justify-center min-h-[620px] lg:min-h-[700px]">
+        <div className="relative w-full flex flex-col items-center justify-center min-h-[500px] lg:min-h-[560px]">
 
           {/* ========================================================
               LEFT COLUMN: 4 FLOATING CARDS (STAGGERED ORBITAL ALIGNMENT)
@@ -270,82 +270,110 @@ export default function Hero() {
           />
 
           {/* ========================================================
-              CENTERED HERO CONTENT (TIGHT CENTER + HUGE DISTANCE)
+              CENTERED HERO CONTENT (BOLD, ATTRACTIVE & IMPACTFUL)
               ======================================================== */}
-          <div className="relative z-10 w-full max-w-lg sm:max-w-xl mx-auto flex flex-col items-center text-center px-4 sm:px-6 py-6 lg:py-10">
+          <div className="relative z-10 w-full max-w-xl sm:max-w-2xl mx-auto flex flex-col items-center text-center px-4 sm:px-6 pt-0 sm:pt-1 pb-3 sm:pb-5">
             
-            {/* Top Pill */}
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 backdrop-blur-sm border border-blue-100 mb-5 shadow-sm"
+            {/* Elite Compact Floating Animated Card */}
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.94 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                y: [-4, 4, -4],
+                x: [-2, 2, -2],
+                rotate: [-0.6, 0.6, -0.6]
+              }}
+              transition={{ 
+                opacity: { duration: 0.5 },
+                scale: { duration: 0.5 },
+                y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+                x: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+                rotate: { duration: 6.2, repeat: Infinity, ease: "easeInOut" }
+              }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="relative -mt-2 sm:-mt-4 mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-2.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-xl border border-blue-200/80 shadow-[0_6px_22px_rgba(17,110,240,0.12),inset_0_1px_1px_rgba(255,255,255,0.95)] ring-1 ring-blue-500/10 cursor-default group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(17,110,240,0.22)] hover:border-blue-400/80"
             >
-              <span className="text-blue-500 text-xs">✨</span>
-              <span className="text-xs font-semibold text-blue-700">
-                Your Growth Partner in the Digital World
-              </span>
+              {/* Compact Glowing Icon Capsule */}
+              <div className="relative flex items-center justify-center w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#116ef0] via-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/30 shrink-0">
+                <Globe className="w-3 h-3 text-white group-hover:rotate-45 transition-transform duration-500" />
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-500 border border-white rounded-full animate-ping" />
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-500 border border-white rounded-full" />
+              </div>
+
+              {/* Text Content */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[11.5px] sm:text-[12.5px] font-bold text-slate-800 tracking-tight whitespace-nowrap">
+                  Your Growth Partner in the Digital World
+                </span>
+                <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200/70 px-1.5 py-0.5 rounded-full leading-none">
+                  <Sparkles className="w-2.5 h-2.5 text-blue-500 animate-pulse" />
+                  Live
+                </span>
+              </div>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline - Bold, Punchy & Attractive */}
             <motion.h1 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold tracking-tight text-slate-900 leading-[1.14] mb-5 max-w-lg sm:max-w-xl min-h-[110px] sm:min-h-[130px] lg:min-h-[160px]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-black tracking-[-0.035em] text-slate-950 leading-[1.08] mb-3.5 sm:mb-4 max-w-xl sm:max-w-2xl min-h-[110px] sm:min-h-[135px] lg:min-h-[160px]"
             >
-              More Leads. Stronger Brands. <br />
+              More Leads. <br className="hidden sm:inline" />
+              Stronger Brands. <br />
               <span className="inline-flex items-center justify-center mt-1">
-                <span className="text-[#116ef0]">
+                <span className="text-[#116ef0] font-black drop-shadow-[0_2px_10px_rgba(17,110,240,0.2)]">
                   {text}
                 </span>
-                <span className="w-1 lg:w-1.5 h-7 sm:h-9 lg:h-11 bg-[#116ef0] ml-1.5 animate-pulse rounded-full opacity-80" />
+                <span className="w-1.5 lg:w-2 h-8 sm:h-10 lg:h-12 bg-[#116ef0] ml-2 animate-pulse rounded-full opacity-90 shadow-[0_0_12px_rgba(17,110,240,0.6)]" />
               </span>
             </motion.h1>
 
-            {/* Centered Subtext */}
+            {/* Centered Subtext - Bold & Clear */}
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xs sm:text-sm lg:text-base text-slate-600 font-medium max-w-md mx-auto mb-8 leading-relaxed"
+              className="text-sm sm:text-base lg:text-[1.05rem] text-slate-700 font-semibold max-w-lg mx-auto mb-5 sm:mb-6 leading-relaxed"
             >
               We help ambitious businesses generate high-quality leads, scale their online presence with strategic digital marketing, and build modern, high-converting websites.
             </motion.p>
 
-            {/* Mini Services Pill Row (Centered) */}
+            {/* Mini Services Pill Row (Centered & Crisp) */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 w-full max-w-lg"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 w-full max-w-xl"
             >
-              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
-                <div className="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
-                  <MousePointerClick className="w-3 h-3 text-white" />
+              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-blue-200 hover:shadow-md transition-all">
+                <div className="w-6.5 h-6.5 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20">
+                  <MousePointerClick className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="text-left">
-                  <span className="block text-xs font-bold text-slate-900 leading-tight">Lead Generation</span>
-                  <span className="text-[9px] text-slate-500">Quality Leads</span>
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Lead Generation</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium">Quality Leads & Sales</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
-                <div className="w-6 h-6 rounded-lg bg-indigo-500 flex items-center justify-center shadow-sm">
-                  <Megaphone className="w-3 h-3 text-white" />
+              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-200 hover:shadow-md transition-all">
+                <div className="w-6.5 h-6.5 rounded-lg bg-indigo-500 flex items-center justify-center shadow-md shadow-indigo-500/20">
+                  <Megaphone className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="text-left">
-                  <span className="block text-xs font-bold text-slate-900 leading-tight">Digital Marketing</span>
-                  <span className="text-[9px] text-slate-500">More Reach</span>
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Digital Marketing</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium">More Reach & ROI</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 bg-white/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/60 shadow-sm">
-                <div className="w-6 h-6 rounded-lg bg-purple-500 flex items-center justify-center shadow-sm">
-                  <Globe className="w-3 h-3 text-white" />
+              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-purple-200 hover:shadow-md transition-all">
+                <div className="w-6.5 h-6.5 rounded-lg bg-purple-500 flex items-center justify-center shadow-md shadow-purple-500/20">
+                  <Globe className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="text-left">
-                  <span className="block text-xs font-bold text-slate-900 leading-tight">Web Development</span>
-                  <span className="text-[9px] text-slate-500">Fast & Scalable</span>
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Web Development</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium">Fast & Scalable</span>
                 </div>
               </div>
             </motion.div>
@@ -355,7 +383,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto mb-7"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 w-full sm:w-auto mb-5"
             >
               {/* Primary Action: Start Project */}
               <a 
@@ -368,18 +396,6 @@ export default function Hero() {
                 </div>
               </a>
 
-              {/* WhatsApp CTA Button */}
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp"
-                className="group px-4.5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-[13px] border border-white/20 shadow-[0_4px_14px_rgba(37,211,102,0.3),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <WhatsAppIcon className="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" />
-                <span>Chat on WhatsApp</span>
-              </a>
-              
               {/* Secondary Action */}
               <a
                 href="#process"
@@ -420,7 +436,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="lg:hidden mt-5 flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-800"
+              className="lg:hidden mt-4 flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-800"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -436,7 +452,7 @@ export default function Hero() {
       {/* =========================================
           BOTTOM STRIP: 4 TRUST FEATURES
           ========================================= */}
-      <div className="relative z-10 container mx-auto px-5 lg:px-6 max-w-7xl mt-8 border-t border-slate-200/60 pt-7 pb-4">
+      <div className="relative z-10 container mx-auto px-5 lg:px-6 max-w-7xl mt-4 sm:mt-6 border-t border-slate-200/60 pt-5 sm:pt-6 pb-3 sm:pb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 text-left">
           
           <div className="flex items-start gap-4 p-4 sm:p-0 bg-white/50 sm:bg-transparent rounded-2xl sm:rounded-none border border-slate-100 sm:border-none shadow-sm sm:shadow-none">

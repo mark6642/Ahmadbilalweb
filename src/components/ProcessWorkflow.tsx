@@ -98,6 +98,7 @@ export default function ProcessWorkflow() {
       id="process" 
       className="relative pt-6 sm:pt-8 lg:pt-10 pb-20 lg:pb-28 bg-[#f8fafc] overflow-hidden selection:bg-blue-500/20"
     >
+      <div id="how-it-works" className="absolute -top-24" />
       {/* Background Ornaments (matching Hero & ServicesBento) */}
       <div className="absolute top-[5%] right-[-5%] w-[35vw] h-[35vw] bg-blue-400/10 rounded-full blur-[110px] pointer-events-none" />
       <div className="absolute bottom-[5%] left-[-5%] w-[35vw] h-[35vw] bg-purple-400/10 rounded-full blur-[110px] pointer-events-none" />

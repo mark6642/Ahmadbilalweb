@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { 
   ArrowRight, Play, TrendingUp, Megaphone, Globe, 
   ShieldCheck, Zap, Star, CheckCircle2,
-  MousePointerClick, Sparkles, DollarSign
+  MousePointerClick, Sparkles, DollarSign, Send
 } from "lucide-react";
 
 // WhatsApp Contact Configuration
 // Tip: Yahan apna WhatsApp number daalein (country code k sath, bina '+' ya space k, eg: "923001234567")
-const WHATSAPP_NUMBER = "923000000000"; 
+const WHATSAPP_NUMBER = "923107718742"; 
 const WHATSAPP_MESSAGE = "Hi Ahmad Bilal, I am interested in your agency services and would like to discuss a project.";
 
 // Typewriter Animation Words
@@ -345,35 +345,45 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 w-full max-w-xl"
+              className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:gap-3 mb-5 sm:mb-6 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
             >
-              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-blue-200 hover:shadow-md transition-all">
-                <div className="w-6.5 h-6.5 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20">
-                  <MousePointerClick className="w-3.5 h-3.5 text-white" />
-                </div>
-                <div className="text-left">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Lead Generation</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium">Quality Leads & Sales</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-200 hover:shadow-md transition-all">
-                <div className="w-6.5 h-6.5 rounded-lg bg-indigo-500 flex items-center justify-center shadow-md shadow-indigo-500/20">
-                  <Megaphone className="w-3.5 h-3.5 text-white" />
-                </div>
-                <div className="text-left">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Digital Marketing</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium">More Reach & ROI</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5 bg-white/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-sm hover:border-purple-200 hover:shadow-md transition-all">
-                <div className="w-6.5 h-6.5 rounded-lg bg-purple-500 flex items-center justify-center shadow-md shadow-purple-500/20">
+              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-purple-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-purple-600 flex items-center justify-center shadow-md shadow-purple-600/20 group-hover:scale-105 transition-transform shrink-0">
                   <Globe className="w-3.5 h-3.5 text-white" />
                 </div>
-                <div className="text-left">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight">Web Development</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium">Fast & Scalable</span>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Web Development</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Fast & Scalable</span>
+                </div>
+              </div>
+
+              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <MousePointerClick className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Lead Generation</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Quality Leads & Sales</span>
+                </div>
+              </div>
+
+              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-emerald-600 flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <Send className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Clients Outreach</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Targeted B2B Deals</span>
+                </div>
+              </div>
+
+              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <Megaphone className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Social Media Marketing</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Viral Reach & ROI</span>
                 </div>
               </div>
             </motion.div>

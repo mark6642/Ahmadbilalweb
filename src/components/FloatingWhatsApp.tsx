@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 
 // ✦ WhatsApp Configuration
 // Yahan apna WhatsApp number daalein (country code ke sath, bina '+' ya space ke, eg: "923001234567")
-const WHATSAPP_NUMBER = "923000000000";
+const WHATSAPP_NUMBER = "923107718742";
 const WHATSAPP_MESSAGE = "Hi Ahmad Bilal, I am interested in your agency services and would like to discuss a project.";
 
 function WhatsAppIcon({ className = "w-6 h-6" }: { className?: string }) {

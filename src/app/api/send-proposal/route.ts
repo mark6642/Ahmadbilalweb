@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
     const recipientEmail =
-      process.env.PROPOSAL_RECEIVER_EMAIL || smtpUser || "ahmadbilal@example.com";
+      process.env.PROPOSAL_RECEIVER_EMAIL || smtpUser || "aisalesmarketinga@gmail.com";
 
     const submissionTime = new Date().toLocaleString("en-US", {
       timeZone: "UTC",

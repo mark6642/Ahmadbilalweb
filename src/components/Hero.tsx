@@ -13,8 +13,6 @@ import {
 const WHATSAPP_NUMBER = "923107718742"; 
 const WHATSAPP_MESSAGE = "Hi Ahmad Bilal, I am interested in your agency services and would like to discuss a project.";
 
-// Typewriter Animation Words
-const ANIMATED_WORDS = ["Bigger Growth.", "Higher Revenue.", "Viral Reach.", "Top Rankings."];
 
 function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -32,40 +30,9 @@ function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
 export default function Hero() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Typewriter Animation State
-  const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    const timer = setTimeout(() => {
-      const currentWord = ANIMATED_WORDS[wordIndex];
-      
-      if (!isDeleting) {
-        setText(currentWord.substring(0, text.length + 1));
-        if (text === currentWord) {
-          // Pause when word is completely typed
-          setTimeout(() => setIsDeleting(true), 2000);
-          return;
-        }
-      } else {
-        setText(currentWord.substring(0, text.length - 1));
-        if (text === "") {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % ANIMATED_WORDS.length);
-          return;
-        }
-      }
-    }, isDeleting ? 30 : 80); // Typing speed
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, wordIndex, isMounted]);
 
   if (!isMounted) return null;
 
@@ -272,7 +239,7 @@ export default function Hero() {
           {/* ========================================================
               CENTERED HERO CONTENT (BOLD, ATTRACTIVE & IMPACTFUL)
               ======================================================== */}
-          <div className="relative z-10 w-full max-w-xl sm:max-w-2xl mx-auto flex flex-col items-center text-center px-4 sm:px-6 pt-0 sm:pt-1 pb-3 sm:pb-5">
+          <div className="relative z-10 w-full max-w-4xl lg:max-w-5xl mx-auto flex flex-col items-center text-center px-4 sm:px-6 pt-0 sm:pt-1 pb-3 sm:pb-5">
             
             {/* Elite Compact Floating Animated Card */}
             <motion.div
@@ -318,15 +285,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-black tracking-[-0.035em] text-slate-950 leading-[1.08] mb-3.5 sm:mb-4 max-w-xl sm:max-w-2xl min-h-[110px] sm:min-h-[135px] lg:min-h-[160px]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.65rem] font-black tracking-[-0.035em] text-slate-950 leading-[1.12] mb-3.5 sm:mb-4 max-w-2xl sm:max-w-3xl lg:max-w-4xl"
             >
-              More Leads. <br className="hidden sm:inline" />
-              Stronger Brands. <br />
+              Build Your Pipeline Book More Qualified Meetings. <br className="hidden sm:inline" />
+              Build a Powerful Website. <br className="hidden sm:inline" />
               <span className="inline-flex items-center justify-center mt-1">
                 <span className="text-[#116ef0] font-black drop-shadow-[0_2px_10px_rgba(17,110,240,0.2)]">
-                  {text}
+                  Grow Your Business.
                 </span>
-                <span className="w-1.5 lg:w-2 h-8 sm:h-10 lg:h-12 bg-[#116ef0] ml-2 animate-pulse rounded-full opacity-90 shadow-[0_0_12px_rgba(17,110,240,0.6)]" />
               </span>
             </motion.h1>
 
@@ -340,50 +306,54 @@ export default function Hero() {
               We help ambitious businesses generate high-quality leads, scale their online presence with strategic digital marketing, and build modern, high-converting websites.
             </motion.p>
 
-            {/* Mini Services Pill Row (Centered & Crisp) */}
+            {/* Mini Services Pill Row (Aligned in a Single Line) */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:gap-3 mb-5 sm:mb-6 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
+              className="flex flex-nowrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 lg:gap-3 mb-5 sm:mb-6 w-full max-w-full overflow-x-auto sm:overflow-visible px-2 sm:px-0 py-1"
             >
-              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-purple-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
-                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-purple-600 flex items-center justify-center shadow-md shadow-purple-600/20 group-hover:scale-105 transition-transform shrink-0">
-                  <Globe className="w-3.5 h-3.5 text-white" />
-                </div>
-                <div className="text-left min-w-0">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Web Development</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Fast & Scalable</span>
-                </div>
-              </div>
-
-              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
-                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform shrink-0">
-                  <MousePointerClick className="w-3.5 h-3.5 text-white" />
-                </div>
-                <div className="text-left min-w-0">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Lead Generation</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Quality Leads & Sales</span>
-                </div>
-              </div>
-
-              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+              {/* 1. Outreaching */}
+              <div className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
                 <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-emerald-600 flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform shrink-0">
                   <Send className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="text-left min-w-0">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Clients Outreach</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Targeted B2B Deals</span>
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Outreaching</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">Targeted B2B Deals</span>
                 </div>
               </div>
 
-              <div className="group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+              {/* 2. Lead Generation */}
+              <div className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <MousePointerClick className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Lead Generation</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">Quality Leads & Sales</span>
+                </div>
+              </div>
+
+              {/* 3. Web Development */}
+              <div className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-purple-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-purple-600 flex items-center justify-center shadow-md shadow-purple-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <Globe className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Web Development</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">Fast & Scalable</span>
+                </div>
+              </div>
+
+              {/* 4. Social Media Marketing */}
+              <div className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
                 <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/20 group-hover:scale-105 transition-transform shrink-0">
                   <Megaphone className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="text-left min-w-0">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight truncate">Social Media Marketing</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium block truncate">Viral Reach & ROI</span>
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Social Media Marketing</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">Viral Reach & ROI</span>
                 </div>
               </div>
             </motion.div>

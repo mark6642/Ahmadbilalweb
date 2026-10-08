@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Send,
   CheckCircle2,
-  Sparkles,
   Globe,
   Zap,
   Megaphone,
@@ -13,13 +11,14 @@ import {
   ArrowRight,
   Loader2,
   ShieldCheck,
-  Clock,
   ChevronRight,
   User,
   Mail,
   Building,
-  MessageSquare,
 } from "lucide-react";
+
+// Direct Site Owner Contact Email
+const OWNER_EMAIL = "aisalesmarketinga@gmail.com";
 
 const SERVICES = [
   { id: "Web Development", label: "Web Development", icon: Globe },
@@ -182,7 +181,7 @@ export default function BookingSection() {
                     Thank You, {formData.name || "Founder"}!
                   </h3>
                   <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Ahmad Bilal has received your proposal. We are reviewing your requirements and will reach out to <strong className="text-slate-800">{formData.email}</strong> within 2–4 hours.
+                    Your proposal has been delivered directly to Ahmad Bilal at <strong className="text-slate-800">{OWNER_EMAIL}</strong>. We are reviewing your requirements and will reach out to <strong className="text-slate-800">{formData.email}</strong> within 2–4 hours.
                   </p>
                 </div>
 
@@ -203,6 +202,33 @@ export default function BookingSection() {
                   ========================================================= */
               <form onSubmit={handleSubmit} className="space-y-6">
                 
+                {/* Direct Site Owner Contact Banner */}
+                <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:px-4 rounded-2xl bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-slate-50 border border-blue-100 shadow-2xs">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs shadow-blue-500/20">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div className="text-left">
+                      <span className="text-[10.5px] uppercase font-bold tracking-wider text-blue-700 block">
+                        Direct Owner Email
+                      </span>
+                      <a 
+                        href={`mailto:${OWNER_EMAIL}?subject=Project%20Inquiry%20via%20Website&body=Hi%20Ahmad,%0A%0AI%20would%20like%20to%20discuss%20a%20project...`}
+                        className="font-bold text-slate-900 hover:text-blue-600 transition-colors text-xs sm:text-sm block"
+                      >
+                        {OWNER_EMAIL}
+                      </a>
+                    </div>
+                  </div>
+                  <a
+                    href={`mailto:${OWNER_EMAIL}?subject=Project%20Inquiry%20via%20Website&body=Hi%20Ahmad,%0A%0AI%20would%20like%20to%20discuss%20a%20project...`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 font-semibold text-xs shadow-2xs transition-all cursor-pointer"
+                  >
+                    <span>Email Directly</span>
+                    <ArrowRight className="w-3 h-3 text-blue-600" />
+                  </a>
+                </div>
+
                 {/* 1. Services Pill Selection */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
@@ -333,8 +359,8 @@ export default function BookingSection() {
                   </span>
                   <span className="text-slate-300">•</span>
                   <span className="flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5 text-blue-600" />
-                    Direct with Ahmad Bilal
+                    <Mail className="h-3.5 w-3.5 text-blue-600" />
+                    Delivered directly to {OWNER_EMAIL}
                   </span>
                   <span className="text-slate-300">•</span>
                   <span>4-Hour Response</span>

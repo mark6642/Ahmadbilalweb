@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Our Team", href: "#team" },
   { name: "About Us", href: "#about" },
   { name: "Reviews", href: "#reviews" },
+  { name: "Pricing", href: "#pricing" },
 ];
 
 export default function Navbar() {

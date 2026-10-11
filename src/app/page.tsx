@@ -4,8 +4,8 @@ import TrustMarquee from "@/components/TrustMarquee";
 import ServicesBento from "@/components/ServicesBento";
 import GrowthEngineSection from "@/components/GrowthEngineSection";
 import ProcessWorkflow from "@/components/ProcessWorkflow";
+import AboutSection from "@/components/AboutSection";
 import Testimonials from "@/components/Testimonials";
-import PricingSection from "@/components/PricingSection";
 import FaqSection from "@/components/FaqSection";
 import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
@@ -32,11 +32,11 @@ export default function Home() {
       {/* 14-Day Sprint Execution Model */}
       <ProcessWorkflow />
 
+      {/* Human-Led Agency Philosophy & About Us */}
+      <AboutSection />
+
       {/* Verified Client Testimonials & Reviews */}
       <Testimonials />
-
-      {/* Transparent Sprint & Retainer Pricing Plans */}
-      <PricingSection />
 
       {/* Frequently Asked Questions */}
       <FaqSection />

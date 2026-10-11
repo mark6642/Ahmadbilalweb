@@ -111,18 +111,33 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
-                <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Web Development
+                <a href="/services/linkedin-outreach" className="hover:text-blue-600 transition-colors">
+                  LinkedIn Outreach
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Leads Generation
+                <a href="/services/b2b-lead-generation" className="hover:text-blue-600 transition-colors">
+                  B2B Lead Generation
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Social Media Marketing
+                <a href="/services/b2b-appointment-setting" className="hover:text-blue-600 transition-colors">
+                  Appointment Setting
+                </a>
+              </li>
+              <li>
+                <a href="/services/instagram-outreach-lead-generation" className="hover:text-blue-600 transition-colors">
+                  Instagram Growth & DMs
+                </a>
+              </li>
+              <li>
+                <a href="/services/email-outreach" className="hover:text-blue-600 transition-colors">
+                  Cold Email Engine
+                </a>
+              </li>
+              <li>
+                <a href="/services/email-sequences-follow-up-management" className="hover:text-blue-600 transition-colors">
+                  Email Follow-Up Sequences
                 </a>
               </li>
             </ul>
@@ -135,27 +150,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
-                <a href="#process" className="hover:text-blue-600 transition-colors">
+                <a href="/#services" className="hover:text-blue-600 transition-colors">
+                  All Services
+                </a>
+              </li>
+              <li>
+                <a href="/industries" className="hover:text-blue-600 transition-colors">
+                  44 Industries
+                </a>
+              </li>
+              <li>
+                <a href="/#process" className="hover:text-blue-600 transition-colors">
                   How It Works
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-blue-600 transition-colors">
-                  Testimonials
+                <a href="/#about" className="hover:text-blue-600 transition-colors">
+                  About Us
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-blue-600 transition-colors">
-                  Pricing Plans
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-blue-600 transition-colors">
+                <a href="/#faq" className="hover:text-blue-600 transition-colors">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#book-call" className="hover:text-blue-600 transition-colors">
+                <a href="/#book-call" className="hover:text-blue-600 transition-colors">
                   Book Strategy Call
                 </a>
               </li>

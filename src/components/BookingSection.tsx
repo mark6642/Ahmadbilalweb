@@ -111,6 +111,8 @@ export default function BookingSection() {
       id="book-call"
       className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden"
     >
+      {/* Anchor for #booking */}
+      <div id="booking" className="absolute -top-12 left-0" aria-hidden="true" />
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />

@@ -87,14 +87,14 @@ export default function Testimonials() {
         <div className="flex flex-col items-center text-center">
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-semibold text-slate-700 mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <Sparkles className="w-3.5 h-3.5 text-[#653897]" />
             <span>Client Testimonials</span>
           </div>
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
             What Founders Say About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70]">
               Working With Us
             </span>
           </h2>
@@ -142,7 +142,7 @@ export default function Testimonials() {
               key={idx}
               className="w-[340px] sm:w-[400px] shrink-0"
             >
-              <div className="h-full flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.07)] hover:border-blue-300/80 transition-all duration-300">
+              <div className="h-full flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.07)] hover:border-violet-300/80 transition-all duration-300">
                 
                 <div>
                   {/* Stars + Result Badge */}
@@ -153,8 +153,8 @@ export default function Testimonials() {
                       ))}
                     </div>
 
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-0.5 rounded-full">
-                      <TrendingUp className="w-3 h-3 text-blue-600" />
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#653897] bg-violet-50 border border-violet-100 px-2.5 py-0.5 rounded-full">
+                      <TrendingUp className="w-3 h-3 text-[#653897]" />
                       {item.result}
                     </span>
                   </div>

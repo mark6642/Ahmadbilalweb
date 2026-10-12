@@ -53,9 +53,9 @@ export default function Hero() {
           ========================================= */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Soft ambient lighting glows */}
-        <div className="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] bg-blue-400/15 rounded-full blur-[130px]" />
+        <div className="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] bg-[#653897]/15 rounded-full blur-[130px]" />
         <div className="absolute bottom-[15%] left-[-5%] w-[40vw] h-[40vw] bg-purple-400/15 rounded-full blur-[120px]" />
-        <div className="absolute top-[20%] left-[30%] w-[35vw] h-[35vw] bg-cyan-400/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[20%] left-[30%] w-[35vw] h-[35vw] bg-violet-400/10 rounded-full blur-[120px]" />
         
         {/* Subtle dot grid for clean tech feel */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
@@ -77,9 +77,9 @@ export default function Hero() {
           <motion.div 
             animate={{ y: [0, -12, 0], x: [0, 4, 0] }}
             transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-2 left-2 xl:left-6 2xl:left-12 -rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(17,110,240,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute top-2 left-2 xl:left-6 2xl:left-12 -rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(101,56,151,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#116ef0] to-indigo-600 text-white font-bold flex items-center justify-center shrink-0 shadow-sm text-xs">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#653897] to-[#431D70] text-white font-bold flex items-center justify-center shrink-0 shadow-sm text-xs">
               SJ
             </div>
             <div>
@@ -88,7 +88,7 @@ export default function Hero() {
                 <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">✓ Verified</span>
               </div>
               <p className="text-[10px] text-slate-600 leading-snug">
-                &ldquo;Pipeline up <span className="font-bold text-[#116ef0]">+320%</span> in 30 days! 🔥&rdquo;
+                &ldquo;Pipeline up <span className="font-bold text-[#653897]">+320%</span> in 30 days! 🔥&rdquo;
               </p>
             </div>
           </motion.div>
@@ -97,7 +97,7 @@ export default function Hero() {
           <motion.div 
             animate={{ y: [0, -10, 0], x: [0, -4, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -left-3 xl:left-0 2xl:left-6 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-blue-50 shadow-[0_14px_36px_rgba(17,110,240,0.11)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -left-3 xl:left-0 2xl:left-6 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-violet-50 shadow-[0_14px_36px_rgba(101,56,151,0.11)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <div className="relative shrink-0">
               <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-sm">
@@ -140,11 +140,11 @@ export default function Hero() {
           <motion.div 
             animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
             transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="hidden lg:flex items-center gap-2 absolute bottom-2 left-0 xl:left-2 2xl:left-8 rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-blue-100/80 shadow-[0_10px_28px_rgba(17,110,240,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2 absolute bottom-2 left-0 xl:left-2 2xl:left-8 rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-violet-100/80 shadow-[0_10px_28px_rgba(101,56,151,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#116ef0] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#116ef0]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#653897] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#653897]"></span>
             </span>
             <span className="text-[10.5px] font-bold text-slate-800 whitespace-nowrap">
               ⚡ 24 Qualified Meetings Booked
@@ -237,7 +237,7 @@ export default function Hero() {
           <motion.div
             animate={{ y: [-10, 10, -10], x: [-6, 6, -6], scale: [1, 1.05, 1] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="hidden lg:block absolute -top-6 left-[22%] w-8 h-8 rounded-full bg-blue-400/10 backdrop-blur-md border border-white/80 shadow-sm pointer-events-none z-10"
+            className="hidden lg:block absolute -top-6 left-[22%] w-8 h-8 rounded-full bg-[#653897]/10 backdrop-blur-md border border-white/80 shadow-sm pointer-events-none z-10"
           />
           <motion.div
             animate={{ y: [8, -8, 8], x: [5, -5, 5] }}
@@ -268,10 +268,10 @@ export default function Hero() {
                 rotate: { duration: 6.2, repeat: Infinity, ease: "easeInOut" }
               }}
               whileHover={{ scale: 1.05, y: -2 }}
-              className="relative mb-4 sm:mb-5 inline-flex items-center gap-2 sm:gap-2.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-xl border border-blue-200/80 shadow-[0_6px_22px_rgba(17,110,240,0.12),inset_0_1px_1px_rgba(255,255,255,0.95)] ring-1 ring-blue-500/10 cursor-default group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(17,110,240,0.22)] hover:border-blue-400/80"
+              className="relative mb-4 sm:mb-5 inline-flex items-center gap-2 sm:gap-2.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-xl border border-violet-200/80 shadow-[0_6px_22px_rgba(101,56,151,0.12),inset_0_1px_1px_rgba(255,255,255,0.95)] ring-1 ring-violet-500/10 cursor-default group transition-all duration-300 hover:shadow-[0_10px_28px_rgba(101,56,151,0.22)] hover:border-violet-400/80"
             >
               {/* Compact Glowing Icon Capsule */}
-              <div className="relative flex items-center justify-center w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#116ef0] via-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/30 shrink-0">
+              <div className="relative flex items-center justify-center w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-[#653897] via-violet-600 to-[#431D70] text-white shadow-sm shadow-violet-500/30 shrink-0">
                 <Globe className="w-3 h-3 text-white group-hover:rotate-45 transition-transform duration-500" />
                 <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-500 border border-white rounded-full animate-ping" />
                 <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-500 border border-white rounded-full" />
@@ -282,8 +282,8 @@ export default function Hero() {
                 <span className="text-[11.5px] sm:text-[12.5px] font-bold text-slate-800 tracking-tight whitespace-nowrap">
                   AISMA — Human-Led B2B Lead Gen & Web Agency
                 </span>
-                <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200/70 px-1.5 py-0.5 rounded-full leading-none">
-                  <Sparkles className="w-2.5 h-2.5 text-blue-500 animate-pulse" />
+                <span className="inline-flex items-center gap-1 text-[9px] font-bold text-[#653897] bg-violet-50 border border-violet-200/70 px-1.5 py-0.5 rounded-full leading-none">
+                  <Sparkles className="w-2.5 h-2.5 text-violet-500 animate-pulse" />
                   Verified
                 </span>
               </div>
@@ -299,10 +299,10 @@ export default function Hero() {
               Build Your Pipeline. <br className="hidden sm:inline" />
               Book More Qualified Meetings. <br className="hidden sm:inline" />
               <span className="relative inline-block mt-1">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#116ef0] via-indigo-600 to-purple-600 font-black">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70] font-black">
                   Build a Powerful Website.
                 </span>
-                <span className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#116ef0]/0 via-indigo-500/60 to-purple-500/0" />
+                <span className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#653897]/0 via-violet-500/60 to-[#431D70]/0" />
               </span>
             </motion.h1>
 
@@ -390,7 +390,7 @@ export default function Hero() {
               {/* Primary Action: Book Strategy Call */}
               <a 
                 href="#book-call"
-                className="relative group px-5 py-2.5 rounded-full bg-gradient-to-r from-[#116ef0] via-blue-600 to-indigo-600 text-white font-bold text-xs sm:text-[13px] border border-white/20 shadow-[0_4px_16px_rgba(17,110,240,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_22px_rgba(17,110,240,0.5),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                className="relative group px-5 py-2.5 rounded-full bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70] text-white font-bold text-xs sm:text-[13px] border border-white/20 shadow-[0_4px_16px_rgba(101,56,151,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_22px_rgba(101,56,151,0.5),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Book a Strategy Call</span>
                 <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
@@ -403,8 +403,8 @@ export default function Hero() {
                 href="#services"
                 className="group px-4.5 py-2.5 rounded-full bg-white/90 hover:bg-white text-slate-800 font-bold text-xs sm:text-[13px] border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:shadow-[0_4px_14px_rgba(15,23,42,0.08)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
               >
-                <div className="w-4 h-4 rounded-full bg-slate-100 group-hover:bg-blue-50 flex items-center justify-center transition-colors">
-                  <Play className="w-2 h-2 text-slate-700 group-hover:text-blue-600 fill-slate-700 group-hover:fill-blue-600 ml-0.5" />
+                <div className="w-4 h-4 rounded-full bg-slate-100 group-hover:bg-violet-50 flex items-center justify-center transition-colors">
+                  <Play className="w-2 h-2 text-slate-700 group-hover:text-[#653897] fill-slate-700 group-hover:fill-[#653897] ml-0.5" />
                 </div>
                 <span>Explore Core Engines</span>
               </a>
@@ -460,7 +460,7 @@ export default function Hero() {
           
           <div className="flex items-start gap-4 p-4 sm:p-0 bg-white/50 sm:bg-transparent rounded-2xl sm:rounded-none border border-slate-100 sm:border-none shadow-sm sm:shadow-none">
             <div className="p-2 rounded-full border border-slate-200 bg-white shadow-sm shrink-0">
-              <ShieldCheck className="w-5 h-5 text-blue-600" />
+              <ShieldCheck className="w-5 h-5 text-[#653897]" />
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-900 mb-1">Human-Led Personalization</h4>

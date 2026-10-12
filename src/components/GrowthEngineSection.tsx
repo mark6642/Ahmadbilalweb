@@ -38,12 +38,12 @@ const GROWTH_ENGINES: GrowthCardItem[] = [
     href: "/services/web-development",
     icon: Code2,
     accentColor: {
-      badge: "bg-blue-50 text-blue-700 border-blue-200/80",
-      iconBg: "bg-blue-50 group-hover:bg-blue-600",
-      iconColor: "text-blue-600 group-hover:text-white",
-      glow: "group-hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.18)]",
-      borderHover: "hover:border-blue-300",
-      pillBg: "bg-blue-500/10",
+      badge: "bg-violet-50 text-[#653897] border-violet-200/80",
+      iconBg: "bg-violet-50 group-hover:bg-[#653897]",
+      iconColor: "text-[#653897] group-hover:text-white",
+      glow: "group-hover:shadow-[0_20px_40px_-15px_rgba(101,56,151,0.18)]",
+      borderHover: "hover:border-violet-300",
+      pillBg: "bg-violet-500/10",
     },
   },
   {
@@ -107,8 +107,8 @@ export default function GrowthEngineSection() {
         {/* Compact Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10 pb-4 border-b border-slate-100">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200/60 mb-3 shadow-xs">
-              <Zap className="h-3 w-3 text-blue-600 fill-blue-600" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-[#653897] border border-violet-200/60 mb-3 shadow-xs">
+              <Zap className="h-3 w-3 text-[#653897] fill-[#653897]" />
               <span>Dedicated Execution Tracks</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -120,7 +120,7 @@ export default function GrowthEngineSection() {
           </div>
 
           <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-500">
-            <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+            <Sparkles className="h-3.5 w-3.5 text-[#653897]" />
             <span>Click any card to explore deep-dive deliverables</span>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function GrowthEngineSection() {
               >
                 <Link
                   href={item.href}
-                  className={`group relative flex flex-col justify-between h-full rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 ${item.accentColor.borderHover} ${item.accentColor.glow} shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:outline-hidden focus:ring-2 focus:ring-blue-500/40`}
+                  className={`group relative flex flex-col justify-between h-full rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 ${item.accentColor.borderHover} ${item.accentColor.glow} shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:outline-hidden focus:ring-2 focus:ring-[#653897]/40`}
                 >
                   {/* Top Bar: Icon + Metric Badge */}
                   <div>
@@ -153,7 +153,7 @@ export default function GrowthEngineSection() {
                     </div>
 
                     {/* Card Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200 leading-snug mb-2">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#653897] transition-colors duration-200 leading-snug mb-2">
                       {item.title}
                     </h3>
 
@@ -168,7 +168,7 @@ export default function GrowthEngineSection() {
                     <span className="text-xs font-semibold text-slate-500 group-hover:text-slate-900 transition-colors duration-200">
                       Explore Track
                     </span>
-                    <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-200 group-hover:rotate-45">
+                    <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-[#653897] group-hover:text-white transition-all duration-200 group-hover:rotate-45">
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </div>
                   </div>

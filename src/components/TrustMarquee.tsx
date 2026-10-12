@@ -28,9 +28,9 @@ export default function TrustMarquee() {
           {[...tools, ...tools].map((tool, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-2.5 shadow-sm hover:border-blue-400 hover:shadow-md transition-all"
+              className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-2.5 shadow-sm hover:border-violet-400 hover:shadow-md transition-all"
             >
-              <span className="h-2 w-2 rounded-full bg-blue-600" />
+              <span className="h-2 w-2 rounded-full bg-[#653897]" />
               <span className="font-bold text-sm text-slate-900">{tool.name}</span>
               <span className="text-xs text-slate-500 font-mono">• {tool.category}</span>
             </div>

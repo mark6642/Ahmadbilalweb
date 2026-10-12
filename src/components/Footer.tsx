@@ -92,7 +92,10 @@ export default function Footer() {
           
           {/* Brand info (4 Cols) */}
           <div className="md:col-span-4 space-y-4">
-            <AismaLogo size="md" />
+            <a href="/" aria-label="AiSMA home" className="inline-block">
+              <AismaLogo size="md" />
+            </a>
+            <div className="h-[3px] w-12 rounded-full bg-gradient-to-r from-purple-600 to-purple-300" />
 
             <p className="text-sm text-slate-600 max-w-sm leading-relaxed mt-3">
               Engineering autonomous growth through next-generation web architectures, algorithmic B2B client hunting, and predictive performance marketing.
@@ -111,32 +114,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
-                <a href="/services/linkedin-outreach" className="hover:text-blue-600 transition-colors">
+                <a href="/services/linkedin-outreach" className="hover:text-[#653897] transition-colors">
                   LinkedIn Outreach
                 </a>
               </li>
               <li>
-                <a href="/services/b2b-lead-generation" className="hover:text-blue-600 transition-colors">
+                <a href="/services/b2b-lead-generation" className="hover:text-[#653897] transition-colors">
                   B2B Lead Generation
                 </a>
               </li>
               <li>
-                <a href="/services/b2b-appointment-setting" className="hover:text-blue-600 transition-colors">
+                <a href="/services/b2b-appointment-setting" className="hover:text-[#653897] transition-colors">
                   Appointment Setting
                 </a>
               </li>
               <li>
-                <a href="/services/instagram-outreach-lead-generation" className="hover:text-blue-600 transition-colors">
+                <a href="/services/instagram-outreach-lead-generation" className="hover:text-[#653897] transition-colors">
                   Instagram Growth & DMs
                 </a>
               </li>
               <li>
-                <a href="/services/email-outreach" className="hover:text-blue-600 transition-colors">
+                <a href="/services/email-outreach" className="hover:text-[#653897] transition-colors">
                   Cold Email Engine
                 </a>
               </li>
               <li>
-                <a href="/services/email-sequences-follow-up-management" className="hover:text-blue-600 transition-colors">
+                <a href="/services/email-sequences-follow-up-management" className="hover:text-[#653897] transition-colors">
                   Email Follow-Up Sequences
                 </a>
               </li>
@@ -150,32 +153,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
-                <a href="/#services" className="hover:text-blue-600 transition-colors">
+                <a href="/#services" className="hover:text-[#653897] transition-colors">
                   All Services
                 </a>
               </li>
               <li>
-                <a href="/industries" className="hover:text-blue-600 transition-colors">
+                <a href="/industries" className="hover:text-[#653897] transition-colors">
                   44 Industries
                 </a>
               </li>
               <li>
-                <a href="/#process" className="hover:text-blue-600 transition-colors">
+                <a href="/#process" className="hover:text-[#653897] transition-colors">
                   How It Works
                 </a>
               </li>
               <li>
-                <a href="/#about" className="hover:text-blue-600 transition-colors">
+                <a href="/#about" className="hover:text-[#653897] transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/#faq" className="hover:text-blue-600 transition-colors">
+                <a href="/#faq" className="hover:text-[#653897] transition-colors">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="/#book-call" className="hover:text-blue-600 transition-colors">
+                <a href="/#book-call" className="hover:text-[#653897] transition-colors">
                   Book Strategy Call
                 </a>
               </li>
@@ -189,13 +192,13 @@ export default function Footer() {
             </h4>
 
             {/* Interactive Working Email (mailto + Copy-to-clipboard) */}
-            <div className="flex items-center gap-1.5 p-1.5 pl-2.5 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-blue-400/50 transition-all max-w-fit group">
+            <div className="flex items-center gap-1.5 p-1.5 pl-2.5 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-violet-400/50 transition-all max-w-fit group">
               <a
                 href={`mailto:${CONTACT_EMAIL}?subject=Inquiry%20from%20Website&body=Hi%20Ahmad,%0A%0AI%20would%20like%20to%20discuss%20a%20project...`}
-                className="text-xs font-mono font-semibold text-slate-700 hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 truncate"
+                className="text-xs font-mono font-semibold text-slate-700 hover:text-[#653897] transition-colors inline-flex items-center gap-1.5 truncate"
                 title="Click to compose email"
               >
-                <Mail className="h-3.5 w-3.5 text-blue-600 shrink-0 group-hover:scale-110 transition-transform" />
+                <Mail className="h-3.5 w-3.5 text-[#653897] shrink-0 group-hover:scale-110 transition-transform" />
                 <span>{CONTACT_EMAIL}</span>
               </a>
 
@@ -265,7 +268,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-slate-600 hover:text-blue-600 transition-colors cursor-pointer font-medium"
+            className="flex items-center gap-1.5 text-slate-600 hover:text-[#653897] transition-colors cursor-pointer font-medium"
           >
             <span>Back to top</span>
             <ArrowUp className="h-3.5 w-3.5" />

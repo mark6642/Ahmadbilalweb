@@ -56,7 +56,7 @@ export interface ServicePageProps {
 
 export default function ServicePageLayout(props: ServicePageProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-500/20 selection:text-blue-700">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-violet-500/20 selection:text-[#653897]">
       {/* Global Navbar */}
       <Navbar />
 
@@ -66,22 +66,22 @@ export default function ServicePageLayout(props: ServicePageProps) {
             ================================================================= */}
         <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden border-b border-slate-200/70">
           {/* Subtle Glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-gradient-to-b from-blue-50/80 via-indigo-50/30 to-transparent pointer-events-none -z-10 blur-3xl" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-gradient-to-b from-violet-50/80 via-indigo-50/30 to-transparent pointer-events-none -z-10 blur-3xl" />
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Breadcrumb Navigation */}
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-6">
-              <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+              <Link href="/" className="hover:text-[#653897] transition-colors">Home</Link>
               <ChevronRight className="h-3 w-3 text-slate-400" />
-              <Link href="/#services" className="hover:text-blue-600 transition-colors">Services</Link>
+              <Link href="/#services" className="hover:text-[#653897] transition-colors">Services</Link>
               <ChevronRight className="h-3 w-3 text-slate-400" />
               <span className="text-slate-800 font-semibold">{props.badge}</span>
             </div>
 
             {/* Performance Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-6 shadow-xs">
-              <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-[#653897] text-xs font-semibold mb-6 shadow-xs">
+              <Sparkles className="h-3.5 w-3.5 text-[#653897]" />
               <span>{props.metricBadge}</span>
             </div>
 
@@ -99,7 +99,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/#book-call"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#653897] hover:bg-[#532d7e] text-white font-semibold text-sm sm:text-base shadow-[0_8px_20px_rgba(101,56,151,0.25)] transition-all active:scale-95"
               >
                 <Calendar className="h-4 w-4" />
                 <span>Book a Strategy Call</span>
@@ -121,7 +121,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
                 <span>Strict Non-Disclosure Guarantee</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-500" />
+                <span className="w-2 h-2 rounded-full bg-[#653897]" />
                 <span>Dedicated Slack/WhatsApp Channel</span>
               </div>
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
@@ -182,7 +182,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
         <section id="deliverables" className="py-16 sm:py-24 bg-white border-b border-slate-200/70">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-12">
-              <div className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold mb-2">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#653897] font-bold mb-2">
                 Complete Scope
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -197,11 +197,11 @@ export default function ServicePageLayout(props: ServicePageProps) {
               {props.deliverables.map((item, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-slate-200 bg-slate-50/40 hover:bg-white p-6 transition-all duration-200 hover:border-blue-300 hover:shadow-[0_8px_24px_rgba(37,99,235,0.08)] flex flex-col justify-between"
+                  className="rounded-2xl border border-slate-200 bg-slate-50/40 hover:bg-white p-6 transition-all duration-200 hover:border-violet-300 hover:shadow-[0_8px_24px_rgba(101,56,151,0.08)] flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-3">
-                      <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60">
+                      <span className="text-xs font-mono font-bold text-[#653897] bg-violet-50 px-2.5 py-1 rounded-md border border-violet-200/60">
                         Module 0{idx + 1}
                       </span>
                       {item.tag && (
@@ -266,7 +266,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
                     <div className="space-y-2 pt-4 border-t border-slate-100">
                       {step.points.map((pt, pIdx) => (
                         <div key={pIdx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[#653897] shrink-0 mt-0.5" />
                           <span>{pt}</span>
                         </div>
                       ))}
@@ -352,10 +352,10 @@ export default function ServicePageLayout(props: ServicePageProps) {
             ================================================================= */}
         <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
           {/* Subtle Ambient Background */}
-          <div className="absolute inset-0 bg-radial-[at_50%_0%] from-blue-600/15 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-[at_50%_0%] from-[#653897]/15 via-transparent to-transparent pointer-events-none" />
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-blue-300 text-xs font-semibold mb-6 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-violet-300 text-xs font-semibold mb-6 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Direct Discovery Schedule Open for Q4</span>
             </div>
@@ -371,7 +371,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/#book-call"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm sm:text-base shadow-[0_12px_28px_rgba(37,99,235,0.4)] transition-all active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#653897] hover:bg-[#532d7e] text-white font-bold text-sm sm:text-base shadow-[0_12px_28px_rgba(101,56,151,0.4)] transition-all active:scale-95"
               >
                 <Calendar className="h-4 w-4" />
                 <span>{props.finalCta.primaryButton}</span>

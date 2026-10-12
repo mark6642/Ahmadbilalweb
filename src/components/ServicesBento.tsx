@@ -28,10 +28,10 @@ export default function ServicesBento() {
       description:
         "Personalized, human-led LinkedIn messaging systems that bypass gatekeepers, start meaningful high-ticket conversations, and book discovery meetings.",
       icon: LinkedInIcon,
-      badgeClass: "bg-blue-50 text-blue-700 border-blue-200",
-      iconClass: "bg-[#0077b5] text-white shadow-blue-600/30",
-      glowClass: "from-blue-600/20",
-      hoverBorder: "hover:border-blue-300",
+      badgeClass: "bg-violet-50 text-[#653897] border-violet-200",
+      iconClass: "bg-[#0077b5] text-white shadow-[#653897]/30",
+      glowClass: "from-[#653897]/20",
+      hoverBorder: "hover:border-violet-300",
       subServiceTags: [
         "Personalized Outreach",
         "Decision-Maker Targeting",
@@ -140,7 +140,7 @@ export default function ServicesBento() {
   return (
     <section id="services" className="relative py-16 lg:py-28 bg-slate-50 overflow-hidden">
       {/* Single soft background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-[30vw] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-[30vw] bg-[#653897]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl lg:px-6 z-10">
         {/* Section Header */}
@@ -151,13 +151,13 @@ export default function ServicesBento() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center mb-10 lg:mb-14 px-5"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-1.5 text-xs sm:text-sm font-semibold text-blue-700 mb-5 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet-100 bg-white px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#653897] mb-5 shadow-sm">
             <Sparkles className="w-3.5 h-3.5" />
             4 Core Growth &amp; Conversion Pillars
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-4">
             Next-Gen Architectures Engineered to <br className="hidden sm:inline" />
-            <span className="text-blue-600">Turn Cold Attention Into Paying Clients</span>
+            <span className="text-[#653897]">Turn Cold Attention Into Paying Clients</span>
           </h2>
           <p className="max-w-3xl text-slate-600 text-base sm:text-lg leading-relaxed">
             Combining sub-second, conversion-optimized web platforms with human-led LinkedIn, Instagram, and cold email outreach systems to flood your pipeline with qualified buyers.
@@ -202,7 +202,7 @@ export default function ServicesBento() {
                 <h3 className="text-lg font-bold text-slate-900 tracking-tight mb-1">
                   {service.title}
                 </h3>
-                <p className="text-xs font-semibold text-blue-600 mb-2 line-clamp-2">
+                <p className="text-xs font-semibold text-[#653897] mb-2 line-clamp-2">
                   {service.tagline}
                 </p>
                 <p className="text-slate-600 text-[13px] leading-relaxed line-clamp-3 mb-4">
@@ -222,7 +222,7 @@ export default function ServicesBento() {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-slate-900 group-hover:text-[#653897] transition-colors">
                   <span>{service.ctaText}</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>

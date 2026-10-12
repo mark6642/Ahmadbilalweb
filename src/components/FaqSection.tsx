@@ -65,11 +65,11 @@ export default function FaqSection() {
   return (
     <section 
       id="faq" 
-      className="relative py-20 sm:py-32 bg-[#fafbfd] border-t border-slate-200/70 overflow-hidden selection:bg-blue-500/20"
+      className="relative py-20 sm:py-32 bg-[#fafbfd] border-t border-slate-200/70 overflow-hidden selection:bg-violet-500/20"
     >
       {/* Background ambient lighting */}
       <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#653897]/5 rounded-full blur-[120px] pointer-events-none" 
         aria-hidden="true"
       />
       <div 
@@ -81,14 +81,14 @@ export default function FaqSection() {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-50/80 px-4 py-1.5 text-xs font-mono font-bold text-blue-700 uppercase tracking-widest mb-4 shadow-2xs backdrop-blur-sm">
-            <HelpCircle className="h-3.5 w-3.5 text-blue-600" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-50/80 px-4 py-1.5 text-xs font-mono font-bold text-[#653897] uppercase tracking-widest mb-4 shadow-2xs backdrop-blur-sm">
+            <HelpCircle className="h-3.5 w-3.5 text-[#653897]" />
             <span>Official Agency FAQs • {FAQ_DATA.items.length} Direct Answers</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Frequently Asked{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70]">
               Questions
             </span>
           </h2>
@@ -145,7 +145,7 @@ export default function FaqSection() {
                 key={faq.id}
                 className={`group rounded-2xl sm:rounded-3xl transition-all duration-300 border overflow-hidden ${
                   isOpen
-                    ? "bg-white border-blue-500/40 shadow-[0_8px_30px_-6px_rgba(37,99,235,0.08)] ring-1 ring-blue-500/10"
+                    ? "bg-white border-violet-500/40 shadow-[0_8px_30px_-6px_rgba(101,56,151,0.08)] ring-1 ring-violet-500/10"
                     : "bg-white/95 border-slate-200/80 hover:border-slate-300 hover:shadow-2xs"
                 }`}
               >
@@ -167,12 +167,12 @@ export default function FaqSection() {
 
                     <div className="min-w-0">
                       {/* Category Label Pill */}
-                      <span className="inline-block text-[10.5px] font-mono font-bold uppercase tracking-wider text-blue-600/90 mb-1">
+                      <span className="inline-block text-[10.5px] font-mono font-bold uppercase tracking-wider text-[#653897]/90 mb-1">
                         {faq.categoryLabel}
                       </span>
                       {/* Question Text */}
                       <h3 className={`text-sm sm:text-base lg:text-lg font-bold transition-colors leading-snug ${
-                        isOpen ? "text-blue-600" : "text-slate-900 group-hover:text-blue-600"
+                        isOpen ? "text-[#653897]" : "text-slate-900 group-hover:text-[#653897]"
                       }`}>
                         {faq.question}
                       </h3>
@@ -183,8 +183,8 @@ export default function FaqSection() {
                   <div
                     className={`shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full transition-all duration-300 ml-2 ${
                       isOpen
-                        ? "bg-blue-600 text-white rotate-45 shadow-sm shadow-blue-600/30"
-                        : "bg-slate-100 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 border border-slate-200/60"
+                        ? "bg-[#653897] text-white rotate-45 shadow-sm shadow-[#653897]/30"
+                        : "bg-slate-100 text-slate-500 group-hover:bg-violet-50 group-hover:text-[#653897] border border-slate-200/60"
                     }`}
                   >
                     <Plus className="w-4 h-4 transition-transform duration-300" />
@@ -211,10 +211,10 @@ export default function FaqSection() {
                         </p>
 
                         {/* Key takeaway highlight box */}
-                        <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-blue-50/70 border border-blue-100 px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-800">
-                          <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                        <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-violet-50/70 border border-violet-100 px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-800">
+                          <CheckCircle2 className="w-4 h-4 text-[#653897] shrink-0" />
                           <span>
-                            <strong className="text-blue-700 font-bold">Key takeaway:</strong>{" "}
+                            <strong className="text-[#653897] font-bold">Key takeaway:</strong>{" "}
                             {faq.keyTakeaway}
                           </span>
                         </div>
@@ -230,8 +230,8 @@ export default function FaqSection() {
         {/* Bottom Callout Box */}
         <div className="mt-12 sm:mt-16 rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="relative shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600">
-              <Zap className="w-6 h-6 text-blue-600" />
+            <div className="relative shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-violet-50 border border-violet-200 text-[#653897]">
+              <Zap className="w-6 h-6 text-[#653897]" />
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
@@ -249,7 +249,7 @@ export default function FaqSection() {
 
           <a
             href="#book-call"
-            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-blue-600 text-white px-5 py-3 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm active:scale-95 group cursor-pointer"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-[#653897] text-white px-5 py-3 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm active:scale-95 group cursor-pointer"
           >
             <span>Book a Strategy Call</span>
             <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 transition-all" />

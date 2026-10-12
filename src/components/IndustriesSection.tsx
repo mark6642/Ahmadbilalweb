@@ -63,7 +63,7 @@ export default function IndustriesSection() {
     >
       {/* Background ambient lighting */}
       <div className="absolute top-[5%] left-[-10%] w-[45vw] h-[45vw] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-10%] w-[45vw] h-[45vw] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-10%] w-[45vw] h-[45vw] bg-[#653897]/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Subtle Dot Matrix Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.02)_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
@@ -93,7 +93,7 @@ export default function IndustriesSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4"
           >
             Specialized B2B Prospecting Across{" "}
-            <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70] bg-clip-text text-transparent">
               44 Industry Verticals
             </span>
           </motion.h2>

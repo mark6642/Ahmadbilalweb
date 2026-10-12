@@ -156,7 +156,7 @@ export default function Navbar() {
             {/* iOS Dynamic Glass Primary CTA - Book a Meeting */}
             <a
               href="/#book-call"
-              className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] hover:bg-right px-4 xl:px-4.5 py-2 text-xs sm:text-[13px] font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer overflow-hidden border border-white/20 whitespace-nowrap"
+              className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#653897] via-[#7c3aed] to-[#431D70] bg-[length:200%_auto] hover:bg-right px-4 xl:px-4.5 py-2 text-xs sm:text-[13px] font-semibold text-white shadow-[0_4px_16px_rgba(101,56,151,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer overflow-hidden border border-white/20 whitespace-nowrap"
             >
               <span>Book a Meeting</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -167,7 +167,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-2 shrink-0">
             <a
               href="/#book-call"
-              className="rounded-full bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm active:scale-95 transition-transform whitespace-nowrap"
+              className="rounded-full bg-[#653897] hover:bg-[#532d7e] px-3 py-1.5 text-xs font-semibold text-white shadow-sm active:scale-95 transition-transform whitespace-nowrap"
             >
               Book a Meeting
             </a>
@@ -226,9 +226,9 @@ export default function Navbar() {
                 <a
                   href="/#book-call"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-[0_8px_20px_rgba(37,99,235,0.3)] active:scale-95 transition-all"
+                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#653897] to-[#431D70] py-3 text-center text-sm font-semibold text-white shadow-[0_8px_20px_rgba(101,56,151,0.3)] active:scale-95 transition-all"
                 >
-                  <Sparkles className="h-4 w-4 text-blue-200" />
+                  <Sparkles className="h-4 w-4 text-purple-200" />
                   <span>Book a Meeting</span>
                   <ArrowRight className="h-4 w-4" />
                 </a>

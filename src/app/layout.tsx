@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white text-slate-900 antialiased selection:bg-blue-500/20 selection:text-blue-700">
+      <body className="min-h-screen bg-white text-slate-900 antialiased selection:bg-violet-500/20 selection:text-[#653897]">
         {/* Ambient Backdrop */}
         <div className="ambient-glow">
           <div className="glow-orb-1" />

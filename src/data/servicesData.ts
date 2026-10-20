@@ -15,6 +15,7 @@ export interface ServiceDetail {
   tagline: string;
   shortDescription: string;
   overviewDescription: string[];
+  image?: string;
   subServices: SubServiceItem[];
   approach: {
     heading: string;
@@ -39,6 +40,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     badge: "B2B LinkedIn Outreach",
     title: "LinkedIn Outreach",
     tagline: "Connect with the Right Decision-Makers on LinkedIn",
+    image: "/images/linkedin-outreach.png",
     shortDescription:
       "Reach potential clients with personalized messages that start meaningful conversations and build high-ticket relationships.",
     overviewDescription: [
@@ -704,6 +706,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     badge: "Direct Outreach Engine",
     title: "Instagram Outreach & Lead Generation",
     tagline: "Reach the Right People and Turn Conversations into Business Opportunities",
+    image: "/images/instagram-outreach.png",
     shortDescription:
       "Targeted DM outreach, lead research, appointment setting, and follow-up management tailored for commercial growth.",
     overviewDescription: [
@@ -1163,6 +1166,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     badge: "Cold Email Outbound",
     title: "Email Outreach",
     tagline: "Reach the Right Decision-Makers Through Personalized Email Outreach",
+    image: "/images/email-outreach.png",
     shortDescription:
       "Targeted cold email campaigns, deep prospect research, human-written copywriting, and structured follow-up sequences.",
     overviewDescription: [

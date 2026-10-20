@@ -12,6 +12,7 @@ export default function LeadGenerationPage() {
     <ServicePageLayout
       badge="B2B Lead Generation"
       metricBadge="99% Data Accuracy • 0% Spam Bounce Guarantee"
+      image="/images/email-outreach.png"
       headline="Targeted B2B Prospect Data That Connects You Straight to Real Decision-Makers."
       subheadline="Stop burning your sales team's energy on generic info@ emails and outdated directories. We build proprietary, triple-verified lead lists of high-intent buyers ready for outbound activation."
       problems={[

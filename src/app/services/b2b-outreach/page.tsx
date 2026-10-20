@@ -12,6 +12,7 @@ export default function B2bOutreachPage() {
     <ServicePageLayout
       badge="Cold Outreach & Appointment Setting"
       metricBadge="15–25 Qualified Sales Calls / Month Guaranteed"
+      image="/images/linkedin-outreach.png"
       headline="Predictable B2B Sales Meetings Booked Straight Into Your Executive Calendar."
       subheadline="We design, build, and operate automated multi-channel cold email and LinkedIn acquisition pipelines. You stop worrying about prospecting and focus solely on closing deals."
       problems={[

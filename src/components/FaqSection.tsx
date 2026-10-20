@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   HelpCircle, 
@@ -8,12 +8,16 @@ import {
   Plus, 
   CheckCircle2, 
   ArrowRight,
-  Zap,
-  Mail,
-  Globe,
-  Send
+  Zap, 
+  Mail, 
+  Globe, 
+  Search,
+  X,
+  MessageCircle,
+  Layers,
+  ChevronRight
 } from "lucide-react";
-import { FAQ_DATA, FaqCategory } from "@/data/faqData";
+import { FAQ_DATA, FaqCategory, FaqItem } from "@/data/faqData";
 
 type FilterKey = "all" | FaqCategory;
 
@@ -34,21 +38,73 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 const TABS: { key: FilterKey; label: string; icon?: React.ComponentType<{ className?: string }> }[] = [
-  { key: "all", label: "All Questions" },
-  { key: "linkedin", label: "LinkedIn FAQs", icon: LinkedInIcon },
-  { key: "instagram", label: "Instagram FAQs", icon: InstagramIcon },
-  { key: "email", label: "Cold Email FAQs", icon: Mail },
-  { key: "web", label: "Web Development FAQs", icon: Globe },
+  { key: "all", label: "All Questions", icon: Layers },
+  { key: "linkedin", label: "LinkedIn", icon: LinkedInIcon },
+  { key: "instagram", label: "Instagram", icon: InstagramIcon },
+  { key: "email", label: "Cold Email", icon: Mail },
+  { key: "web", label: "Web Dev", icon: Globe },
 ];
+
+const CATEGORY_STYLES: Record<
+  FaqCategory,
+  {
+    badgeBg: string;
+    badgeText: string;
+    borderHover: string;
+    glowBg: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }
+> = {
+  linkedin: {
+    badgeBg: "bg-blue-50/90 text-blue-700 border-blue-200/80",
+    badgeText: "text-blue-700",
+    borderHover: "hover:border-blue-300",
+    glowBg: "rgba(37, 99, 235, 0.08)",
+    icon: LinkedInIcon,
+  },
+  instagram: {
+    badgeBg: "bg-pink-50/90 text-pink-700 border-pink-200/80",
+    badgeText: "text-pink-700",
+    borderHover: "hover:border-pink-300",
+    glowBg: "rgba(219, 39, 119, 0.08)",
+    icon: InstagramIcon,
+  },
+  email: {
+    badgeBg: "bg-emerald-50/90 text-emerald-800 border-emerald-200/80",
+    badgeText: "text-emerald-800",
+    borderHover: "hover:border-emerald-300",
+    glowBg: "rgba(5, 150, 105, 0.08)",
+    icon: Mail,
+  },
+  web: {
+    badgeBg: "bg-violet-50/90 text-[#653897] border-violet-200/80",
+    badgeText: "text-[#653897]",
+    borderHover: "hover:border-violet-300",
+    glowBg: "rgba(101, 56, 151, 0.08)",
+    icon: Globe,
+  },
+};
 
 export default function FaqSection() {
   const [activeCategory, setActiveCategory] = useState<FilterKey>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [openId, setOpenId] = useState<string | null>("li-faq-1");
 
-  const filteredFaqs = FAQ_DATA.items.filter((item) => {
-    if (activeCategory === "all") return true;
-    return item.category === activeCategory;
-  });
+  const filteredFaqs = useMemo(() => {
+    return FAQ_DATA.items.filter((item) => {
+      const matchesCategory = activeCategory === "all" || item.category === activeCategory;
+      if (!matchesCategory) return false;
+
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.toLowerCase().trim();
+      return (
+        item.question.toLowerCase().includes(q) ||
+        item.answer.toLowerCase().includes(q) ||
+        item.keyTakeaway.toLowerCase().includes(q) ||
+        item.categoryLabel.toLowerCase().includes(q)
+      );
+    });
+  }, [activeCategory, searchQuery]);
 
   const handleToggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -65,40 +121,72 @@ export default function FaqSection() {
   return (
     <section 
       id="faq" 
-      className="relative py-20 sm:py-32 bg-[#fafbfd] border-t border-slate-200/70 overflow-hidden selection:bg-violet-500/20"
+      className="relative py-24 sm:py-32 bg-gradient-to-b from-white via-[#fbfaff] to-[#f8f9fe] border-t border-slate-200/70 overflow-hidden"
     >
-      {/* Background ambient lighting */}
+      {/* Dynamic ambient gradients */}
       <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#653897]/5 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute top-12 left-1/2 -translate-x-1/2 w-[750px] h-[380px] bg-gradient-to-tr from-[#653897]/8 to-violet-400/5 rounded-full blur-[130px] pointer-events-none" 
         aria-hidden="true"
       />
       <div 
-        className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-indigo-500/4 rounded-full blur-[100px] pointer-events-none" 
+        className="absolute bottom-16 right-5 w-[420px] h-[420px] bg-indigo-500/5 rounded-full blur-[110px] pointer-events-none" 
         aria-hidden="true"
       />
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-50/80 px-4 py-1.5 text-xs font-mono font-bold text-[#653897] uppercase tracking-widest mb-4 shadow-2xs backdrop-blur-sm">
-            <HelpCircle className="h-3.5 w-3.5 text-[#653897]" />
-            <span>Official Agency FAQs • {FAQ_DATA.items.length} Direct Answers</span>
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-50/90 px-4 py-1.5 text-xs font-mono font-bold text-[#653897] uppercase tracking-wider mb-5 shadow-xs backdrop-blur-md">
+            <Sparkles className="h-3.5 w-3.5 text-[#653897] animate-pulse" />
+            <span>Curated Knowledge Base • {FAQ_DATA.items.length} Direct Answers</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-[1.15]">
             Frequently Asked{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70]">
               Questions
             </span>
           </h2>
 
-          <p className="mt-4 text-slate-600 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed font-medium">
-            {FAQ_DATA.subheadline}
+          {/* Subtitle */}
+          <p className="mt-4 text-slate-600 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed font-normal">
+            Everything you need to know about our outreach systems, Next.js architecture, deliverability protocols, and expected outcomes.
           </p>
 
-          {/* Interactive 3-Tab Filter Pills */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-white/95 rounded-2xl border border-slate-200/90 shadow-2xs backdrop-blur-md">
+          {/* Search Bar & Instant Filter */}
+          <div className="mt-7 w-full max-w-lg relative">
+            <div className="relative flex items-center">
+              <Search className="absolute left-4 w-4 h-4 text-slate-400 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search questions (e.g. Next.js, deliverability, guarantee, timeline)..."
+                className="w-full pl-11 pr-10 py-3 rounded-2xl bg-white/90 border border-slate-200/90 shadow-xs text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#653897]/25 focus:border-[#653897] transition-all backdrop-blur-sm"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3.5 text-slate-400 hover:text-slate-600 p-1 rounded-full transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+            {searchQuery && (
+              <div className="mt-2 text-left px-2 text-xs text-slate-500 font-medium">
+                Found {filteredFaqs.length} {filteredFaqs.length === 1 ? "result" : "results"} for &ldquo;{searchQuery}&rdquo;
+              </div>
+            )}
+          </div>
+
+          {/* Interactive Category Filter Pills */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-white/90 rounded-2xl border border-slate-200/80 shadow-xs backdrop-blur-md">
             {TABS.map((tab) => {
               const isActive = activeCategory === tab.key;
               const count = tab.key === "all" 
@@ -111,19 +199,19 @@ export default function FaqSection() {
                   key={tab.key}
                   type="button"
                   onClick={() => handleCategoryChange(tab.key)}
-                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-xs scale-[1.02]"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/80"
+                      ? "bg-[#653897] text-white shadow-sm shadow-[#653897]/20 scale-[1.02]"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
                   }`}
                 >
-                  {TabIcon && <TabIcon className="w-3.5 h-3.5 shrink-0" />}
+                  {TabIcon && <TabIcon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-white" : "text-slate-400"}`} />}
                   <span>{tab.label}</span>
                   <span
-                    className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10.5px] font-mono rounded-md ${
+                    className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-mono rounded-md ${
                       isActive
-                        ? "bg-slate-800 text-slate-200"
-                        : "bg-slate-100 text-slate-500"
+                        ? "bg-white/20 text-white font-bold"
+                        : "bg-slate-100 text-slate-500 font-medium"
                     }`}
                   >
                     {count}
@@ -134,126 +222,200 @@ export default function FaqSection() {
           </div>
         </div>
 
-        {/* Clean Accordion List */}
-        <div className="space-y-3 sm:space-y-3.5">
-          {filteredFaqs.map((faq, idx) => {
-            const isOpen = openId === faq.id;
-            const displayIndex = String(idx + 1).padStart(2, "0");
+        {/* Enhanced Accordion List */}
+        <div className="space-y-3.5 sm:space-y-4">
+          {filteredFaqs.length > 0 ? (
+            filteredFaqs.map((faq, idx) => {
+              const isOpen = openId === faq.id;
+              const style = CATEGORY_STYLES[faq.category];
+              const CategoryIcon = style.icon;
+              const displayIndex = String(idx + 1).padStart(2, "0");
 
-            return (
-              <div
-                key={faq.id}
-                className={`group rounded-2xl sm:rounded-3xl transition-all duration-300 border overflow-hidden ${
-                  isOpen
-                    ? "bg-white border-violet-500/40 shadow-[0_8px_30px_-6px_rgba(101,56,151,0.08)] ring-1 ring-violet-500/10"
-                    : "bg-white/95 border-slate-200/80 hover:border-slate-300 hover:shadow-2xs"
-                }`}
-              >
-                {/* Accordion Trigger Header */}
-                <button
-                  type="button"
-                  onClick={() => handleToggle(faq.id)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-answer-${faq.id}`}
-                  className="w-full flex items-center justify-between p-4.5 sm:p-6 text-left cursor-pointer transition-colors"
+              return (
+                <div
+                  key={faq.id}
+                  className={`group rounded-2xl sm:rounded-3xl transition-all duration-300 border overflow-hidden ${
+                    isOpen
+                      ? "bg-white border-violet-500/40 shadow-[0_12px_32px_-8px_rgba(101,56,151,0.12)] ring-1 ring-violet-500/15"
+                      : "bg-white/95 border-slate-200/80 hover:border-violet-300/80 hover:shadow-sm"
+                  }`}
                 >
-                  <div className="flex items-start sm:items-center gap-3 sm:gap-4 pr-3 min-w-0">
-                    {/* Index Badge */}
-                    <div className="flex items-center gap-2 shrink-0 pt-0.5 sm:pt-0">
-                      <span className="font-mono text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-1 rounded-md border border-slate-200/60">
-                        {displayIndex}
-                      </span>
-                    </div>
-
-                    <div className="min-w-0">
-                      {/* Category Label Pill */}
-                      <span className="inline-block text-[10.5px] font-mono font-bold uppercase tracking-wider text-[#653897]/90 mb-1">
-                        {faq.categoryLabel}
-                      </span>
-                      {/* Question Text */}
-                      <h3 className={`text-sm sm:text-base lg:text-lg font-bold transition-colors leading-snug ${
-                        isOpen ? "text-[#653897]" : "text-slate-900 group-hover:text-[#653897]"
-                      }`}>
-                        {faq.question}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Morphing Toggle Icon */}
-                  <div
-                    className={`shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full transition-all duration-300 ml-2 ${
-                      isOpen
-                        ? "bg-[#653897] text-white rotate-45 shadow-sm shadow-[#653897]/30"
-                        : "bg-slate-100 text-slate-500 group-hover:bg-violet-50 group-hover:text-[#653897] border border-slate-200/60"
-                    }`}
+                  {/* Accordion Trigger Header */}
+                  <button
+                    type="button"
+                    onClick={() => handleToggle(faq.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
+                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer transition-colors"
                   >
-                    <Plus className="w-4 h-4 transition-transform duration-300" />
-                  </div>
-                </button>
+                    <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 pr-3 min-w-0">
+                      {/* Index Badge */}
+                      <div className="flex items-center shrink-0 pt-0.5 sm:pt-0">
+                        <span className={`font-mono text-xs font-bold px-2.5 py-1 rounded-lg border transition-colors ${
+                          isOpen 
+                            ? "bg-[#653897] text-white border-[#653897]" 
+                            : "bg-slate-100/90 text-slate-500 border-slate-200/70 group-hover:border-violet-200 group-hover:text-[#653897]"
+                        }`}>
+                          {displayIndex}
+                        </span>
+                      </div>
 
-                {/* Animated Answer Body */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={`faq-answer-${faq.id}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-4.5 sm:px-6 pb-5 sm:pb-6 pt-1">
-                        <div className="h-px w-full bg-slate-100 mb-4" />
-
-                        {/* Answer paragraph */}
-                        <p className="text-xs sm:text-sm lg:text-[14.5px] text-slate-600 leading-relaxed font-normal">
-                          {faq.answer}
-                        </p>
-
-                        {/* Key takeaway highlight box */}
-                        <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-violet-50/70 border border-violet-100 px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-800">
-                          <CheckCircle2 className="w-4 h-4 text-[#653897] shrink-0" />
-                          <span>
-                            <strong className="text-[#653897] font-bold">Key takeaway:</strong>{" "}
-                            {faq.keyTakeaway}
+                      <div className="min-w-0">
+                        {/* Category Label Pill with Icon */}
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <span className={`inline-flex items-center gap-1 text-[11px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${style.badgeBg}`}>
+                            <CategoryIcon className="w-2.5 h-2.5" />
+                            {faq.categoryLabel}
                           </span>
                         </div>
+
+                        {/* Question Text */}
+                        <h3 className={`text-sm sm:text-base lg:text-lg font-bold transition-colors leading-snug ${
+                          isOpen ? "text-[#653897]" : "text-slate-900 group-hover:text-[#653897]"
+                        }`}>
+                          {faq.question}
+                        </h3>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+
+                    {/* Morphing Toggle Icon Button */}
+                    <div
+                      className={`shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-300 ml-2 ${
+                        isOpen
+                          ? "bg-gradient-to-br from-[#653897] to-[#431D70] text-white rotate-45 shadow-sm shadow-[#653897]/30"
+                          : "bg-slate-100 text-slate-500 group-hover:bg-violet-50 group-hover:text-[#653897] border border-slate-200/70"
+                      }`}
+                    >
+                      <Plus className="w-4 h-4 transition-transform duration-300" />
+                    </div>
+                  </button>
+
+                  {/* Animated Answer Body */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${faq.id}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 sm:px-6 pb-6 pt-1">
+                          {/* Subtle purple gradient separator */}
+                          <div className="h-px w-full bg-gradient-to-r from-violet-200/60 via-slate-200 to-transparent mb-4" />
+
+                          {/* Answer text */}
+                          <p className="text-xs sm:text-sm lg:text-[15px] text-slate-600 leading-relaxed font-normal">
+                            {faq.answer}
+                          </p>
+
+                          {/* Key Takeaway Highlight Card */}
+                          <div className="mt-4 flex items-start gap-3 rounded-2xl bg-gradient-to-r from-violet-50/90 via-purple-50/50 to-indigo-50/40 border border-violet-200/60 p-3.5 sm:p-4 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                            <div className="shrink-0 w-6 h-6 rounded-lg bg-[#653897]/10 flex items-center justify-center text-[#653897] mt-0.5">
+                              <CheckCircle2 className="w-4 h-4 text-[#653897]" />
+                            </div>
+                            <div className="min-w-0">
+                              <span className="block font-bold text-[#653897] text-xs uppercase tracking-wider mb-0.5 font-mono">
+                                Executive Takeaway
+                              </span>
+                              <span className="text-slate-700 font-medium">
+                                {faq.keyTakeaway}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Micro-CTA link */}
+                          <div className="mt-3.5 flex items-center justify-end">
+                            <a 
+                              href="#book-call"
+                              className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-[#653897] hover:text-[#431D70] transition-colors group/link"
+                            >
+                              <span>Discuss this strategy for your business</span>
+                              <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                            </a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })
+          ) : (
+            /* Search empty state */
+            <div className="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-10 text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-violet-50 text-[#653897] mb-3">
+                <HelpCircle className="w-6 h-6" />
               </div>
-            );
-          })}
+              <h4 className="text-base font-bold text-slate-900">
+                No questions found matching &ldquo;{searchQuery}&rdquo;
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-sm mx-auto">
+                Try searching with different keywords like &quot;Next.js&quot;, &quot;deliverability&quot;, &quot;leads&quot;, or reach out directly.
+              </p>
+              <div className="mt-4 flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition-colors"
+                >
+                  Clear Search
+                </button>
+                <a
+                  href="#book-call"
+                  className="px-4 py-2 rounded-xl bg-[#653897] hover:bg-[#431D70] text-xs font-bold text-white transition-colors"
+                >
+                  Ask Ahmad Directly
+                </a>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Bottom Callout Box */}
-        <div className="mt-12 sm:mt-16 rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="relative shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-violet-50 border border-violet-200 text-[#653897]">
-              <Zap className="w-6 h-6 text-[#653897]" />
-              <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
-              </span>
+        {/* Enhanced Bottom Strategy Callout Box */}
+        <div className="mt-14 sm:mt-18 rounded-3xl border border-violet-200/80 bg-gradient-to-br from-white via-violet-50/30 to-purple-50/40 p-6 sm:p-9 shadow-sm relative overflow-hidden">
+          {/* Subtle glow circle */}
+          <div 
+            className="absolute -top-12 -right-12 w-48 h-48 bg-[#653897]/10 rounded-full blur-2xl pointer-events-none" 
+            aria-hidden="true" 
+          />
+
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-start sm:items-center gap-4 text-left">
+              <div className="relative shrink-0 flex items-center justify-center w-13 h-13 rounded-2xl bg-gradient-to-br from-[#653897] to-[#431D70] text-white shadow-md shadow-[#653897]/25">
+                <Zap className="w-6 h-6" />
+                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white" />
+                </span>
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 mb-1">
+                  <span className="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-50 border border-emerald-200/70 px-2 py-0.5 rounded-full">
+                    Ahmad Bilal is available
+                  </span>
+                  <span className="text-slate-400 text-xs">• 1-on-1 Strategic Consulting</span>
+                </div>
+                <h4 className="text-base sm:text-xl font-bold text-slate-900 tracking-tight">
+                  Have a specific question about your niche or offer?
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
+                  Get direct answers tailored to your specific audience. Zero fluff, 100% transparent growth roadmap.
+                </p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900">
-                Have a specific question about your market or audience?
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                Speak directly with Ahmad Bilal. No generic sales pitches, straight strategic advice.
-              </p>
+
+            <div className="shrink-0 flex flex-wrap items-center gap-3 w-full sm:w-auto">
+              <a
+                href="#book-call"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#653897] to-[#431D70] hover:from-[#542d80] hover:to-[#36165b] text-white px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-bold transition-all duration-200 shadow-md shadow-[#653897]/20 active:scale-95 group cursor-pointer"
+              >
+                <span>Book a Strategy Call</span>
+                <ArrowRight className="w-4 h-4 text-violet-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
+              </a>
             </div>
           </div>
-
-          <a
-            href="#book-call"
-            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-[#653897] text-white px-5 py-3 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm active:scale-95 group cursor-pointer"
-          >
-            <span>Book a Strategy Call</span>
-            <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-          </a>
         </div>
 
       </div>

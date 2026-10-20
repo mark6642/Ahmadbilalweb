@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -9,7 +10,9 @@ import {
   Layers, 
   ChevronRight,
   Sparkles,
-  LucideIcon
+  LucideIcon,
+  Globe,
+  Mail
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,6 +38,7 @@ export interface ServicePageProps {
   headline: string;
   subheadline: string;
   metricBadge: string;
+  image?: string;
   problems: {
     title: string;
     description: string;
@@ -55,6 +59,10 @@ export interface ServicePageProps {
 }
 
 export default function ServicePageLayout(props: ServicePageProps) {
+  const isWebDev = props.badge.toLowerCase().includes("web");
+  const isSocial = props.badge.toLowerCase().includes("social");
+  const isLeadGen = props.badge.toLowerCase().includes("lead");
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-violet-500/20 selection:text-[#653897]">
       {/* Global Navbar */}
@@ -68,7 +76,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
           {/* Subtle Glows */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-gradient-to-b from-violet-50/80 via-indigo-50/30 to-transparent pointer-events-none -z-10 blur-3xl" />
 
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Breadcrumb Navigation */}
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-6">
@@ -79,39 +87,139 @@ export default function ServicePageLayout(props: ServicePageProps) {
               <span className="text-slate-800 font-semibold">{props.badge}</span>
             </div>
 
-            {/* Performance Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-[#653897] text-xs font-semibold mb-6 shadow-xs">
-              <Sparkles className="h-3.5 w-3.5 text-[#653897]" />
-              <span>{props.metricBadge}</span>
-            </div>
+            <div className={`grid grid-cols-1 ${props.image ? "lg:grid-cols-12 gap-10 lg:gap-12 items-center" : ""}`}>
+              {/* Left Column */}
+              <div className={props.image ? "lg:col-span-7 xl:col-span-6" : ""}>
+                {/* Performance Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-[#653897] text-xs font-semibold mb-6 shadow-xs">
+                  <Sparkles className="h-3.5 w-3.5 text-[#653897]" />
+                  <span>{props.metricBadge}</span>
+                </div>
 
-            {/* Outcome-Driven H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-6">
-              {props.headline}
-            </h1>
+                {/* Outcome-Driven H1 */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-5">
+                  {props.headline}
+                </h1>
 
-            {/* Solution Subheadline */}
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
-              {props.subheadline}
-            </p>
+                {/* Solution Subheadline */}
+                <p className={`text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-8 ${props.image ? "max-w-xl lg:max-w-lg lg:pr-2" : "max-w-3xl"}`}>
+                  {props.subheadline}
+                </p>
 
-            {/* Dual CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link
-                href="/#book-call"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#653897] hover:bg-[#532d7e] text-white font-semibold text-sm sm:text-base shadow-[0_8px_20px_rgba(101,56,151,0.25)] transition-all active:scale-95"
-              >
-                <Calendar className="h-4 w-4" />
-                <span>Book a Strategy Call</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href="#deliverables"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm sm:text-base transition-all active:scale-95"
-              >
-                <Layers className="h-4 w-4 text-slate-500" />
-                <span>View Deliverables</span>
-              </a>
+                {/* Dual CTAs */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                  <Link
+                    href="/#book-call"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#653897] via-[#7c3aed] to-[#431D70] hover:opacity-95 text-white font-semibold text-sm sm:text-base shadow-[0_8px_20px_rgba(101,56,151,0.25)] transition-all active:scale-95 border border-white/20"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    <span>Book a Strategy Call</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href="#deliverables"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm sm:text-base transition-all active:scale-95"
+                  >
+                    <Layers className="h-4 w-4 text-slate-500" />
+                    <span>View Deliverables</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Visual Image Asset (Slightly larger dimensions) */}
+              {props.image && (
+                <div className="lg:col-span-5 xl:col-span-6 mt-6 lg:mt-0 flex justify-center lg:justify-end">
+                  <div className="relative w-full max-w-xl lg:max-w-[560px] group">
+                    <div
+                      className={`absolute -inset-2.5 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition duration-500 ${
+                        isWebDev
+                          ? "bg-gradient-to-tr from-emerald-500/35 via-teal-500/25 to-indigo-500/30"
+                          : isSocial
+                          ? "bg-gradient-to-tr from-pink-500/35 via-purple-500/25 to-amber-500/30"
+                          : isLeadGen
+                          ? "bg-gradient-to-tr from-indigo-600/35 via-violet-500/25 to-cyan-500/30"
+                          : "bg-gradient-to-tr from-[#0077b5]/30 via-indigo-500/25 to-[#653897]/30"
+                      }`}
+                    />
+
+                    <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white/90 shadow-2xl shadow-indigo-500/10 backdrop-blur-sm">
+                      <div className="relative aspect-[16/11] min-h-[300px] sm:min-h-[360px] lg:min-h-[390px] w-full overflow-hidden bg-slate-100">
+                        <Image
+                          src={props.image}
+                          alt={`${props.headline} - Visual Dashboard`}
+                          fill
+                          priority
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 55vw, 560px"
+                          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                      </div>
+
+                      <div className="p-4 sm:p-5 bg-white/95 backdrop-blur-md border-t border-slate-100 flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5">
+                          {isWebDev ? (
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0">
+                              <Globe className="w-4 h-4 text-white" />
+                            </div>
+                          ) : isSocial ? (
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-pink-600 to-purple-600 flex items-center justify-center text-white shadow-sm shadow-pink-500/30 shrink-0">
+                              <Sparkles className="w-4 h-4 text-white" />
+                            </div>
+                          ) : isLeadGen ? (
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm shadow-indigo-600/30 shrink-0">
+                              <Mail className="w-4 h-4 text-white" />
+                            </div>
+                          ) : (
+                            <div className="w-8 h-8 rounded-lg bg-[#0077b5] flex items-center justify-center text-white font-bold text-xs shadow-sm shadow-[#0077b5]/30 shrink-0">
+                              in
+                            </div>
+                          )}
+                          <div>
+                            <div className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+                              {isWebDev
+                                ? "Next.js Web Engine"
+                                : isSocial
+                                ? "Social Media & DM Funnels"
+                                : isLeadGen
+                                ? "Triple-Verified B2B Leads"
+                                : "Multi-Channel Outreach"}
+                            </div>
+                            <div className="text-[11px] text-slate-500 font-medium">
+                              {isWebDev
+                                ? "Sub-1.0s Speed & 100% Core Vitals"
+                                : isSocial
+                                ? "Compounding Authority & Reach"
+                                : isLeadGen
+                                ? "99% Verified Data & 0% Bounce"
+                                : "LinkedIn & Cold Inboxing"}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span>Active</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="absolute -top-3 -right-2 sm:-right-3 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl px-3.5 py-1.5 shadow-lg flex items-center gap-2 text-xs font-bold text-slate-800">
+                      <span
+                        className={`w-2 h-2 rounded-full animate-ping ${
+                          isWebDev
+                            ? "bg-emerald-500"
+                            : isSocial
+                            ? "bg-pink-500"
+                            : isLeadGen
+                            ? "bg-cyan-500"
+                            : "bg-[#653897]"
+                        }`}
+                      />
+                      <span>{props.metricBadge}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Trust Pill Bar */}
@@ -229,7 +337,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
         <section className="py-16 sm:py-24 bg-slate-50/70 border-b border-slate-200/70">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-12">
-              <div className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-bold mb-2">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#653897] font-bold mb-2">
                 Execution Blueprint
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -248,7 +356,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-200/60">
+                      <span className="text-xs font-mono font-bold text-[#653897] bg-violet-50 px-2.5 py-1 rounded-md border border-violet-200/60">
                         {step.step}
                       </span>
                       <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
@@ -371,7 +479,7 @@ export default function ServicePageLayout(props: ServicePageProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/#book-call"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#653897] hover:bg-[#532d7e] text-white font-bold text-sm sm:text-base shadow-[0_12px_28px_rgba(101,56,151,0.4)] transition-all active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#653897] via-[#7c3aed] to-[#431D70] hover:opacity-95 text-white font-bold text-sm sm:text-base shadow-[0_12px_28px_rgba(101,56,151,0.4)] transition-all active:scale-95 border border-white/20"
               >
                 <Calendar className="h-4 w-4" />
                 <span>{props.finalCta.primaryButton}</span>

@@ -122,18 +122,18 @@ describe("AISMA Data Integrity & Content Validation Test Suite", () => {
   // 4. FAQ TESTS
   // ==========================================
   describe("Frequently Asked Questions (src/data/faqData.ts)", () => {
-    test("TC-12: Contains all 23 FAQs mapped to correct categories", () => {
-      assert.equal(FAQ_DATA.items.length, 23, "Must contain all 23 total FAQs");
+    test("TC-12: Contains all 8 curated FAQs mapped to correct categories", () => {
+      assert.equal(FAQ_DATA.items.length, 8, "Must contain all 8 curated FAQs");
 
       const liFaqs = FAQ_DATA.items.filter((f) => f.category === "linkedin");
       const igFaqs = FAQ_DATA.items.filter((f) => f.category === "instagram");
       const emFaqs = FAQ_DATA.items.filter((f) => f.category === "email");
       const webFaqs = FAQ_DATA.items.filter((f) => f.category === "web");
 
-      assert.equal(liFaqs.length, 7, "LinkedIn must have 7 FAQs");
-      assert.equal(igFaqs.length, 5, "Instagram must have 5 FAQs");
-      assert.equal(emFaqs.length, 5, "Email must have 5 FAQs");
-      assert.equal(webFaqs.length, 6, "Web development must have 6 FAQs");
+      assert.equal(liFaqs.length, 2, "LinkedIn must have 2 FAQs");
+      assert.equal(igFaqs.length, 2, "Instagram must have 2 FAQs");
+      assert.equal(emFaqs.length, 2, "Email must have 2 FAQs");
+      assert.equal(webFaqs.length, 2, "Web development must have 2 FAQs");
     });
 
     test("TC-13: Every FAQ has non-empty question, answer, and key takeaway", () => {

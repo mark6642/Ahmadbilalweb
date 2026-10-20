@@ -36,12 +36,56 @@ function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+const REWRITING_PHRASES = [
+  "Build a Powerful Website.",
+  "Scale Your B2B Outreach.",
+  "Fill Your Sales Pipeline.",
+  "Close High-Ticket Deals.",
+  "Drive Predictable Growth."
+];
+
 export default function Hero() {
   const [isMounted, setIsMounted] = useState(false);
+  
+  // Rewriting (typewriter) animation state
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Typewriter effect loop
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const currentFullText = REWRITING_PHRASES[phraseIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+    const holdDuration = 1800; // Pause when phrase is fully typed
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayedText.length < currentFullText.length) {
+          setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
+        } else {
+          // Pause at end before deleting
+          setTimeout(() => setIsDeleting(true), holdDuration);
+        }
+      } else {
+        // Deleting backward
+        if (displayedText.length > 0) {
+          setDisplayedText(currentFullText.slice(0, displayedText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % REWRITING_PHRASES.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, phraseIndex, isMounted]);
 
   if (!isMounted) return null;
 
@@ -70,14 +114,14 @@ export default function Hero() {
         <div className="relative w-full flex flex-col items-center justify-start lg:min-h-[500px]">
 
           {/* ========================================================
-              LEFT COLUMN: 4 FLOATING CARDS (STAGGERED ORBITAL ALIGNMENT)
+              LEFT COLUMN: 2 FLOATING CARDS (CLEAN & MINIMAL)
               ======================================================== */}
           
-          {/* Card 1: Top-Left (Tilted gently, inset top corner) */}
+          {/* Card 1: Top-Left (Social Proof / Pipeline) */}
           <motion.div 
-            animate={{ y: [0, -12, 0], x: [0, 4, 0] }}
+            animate={{ y: [0, -10, 0], x: [0, 4, 0] }}
             transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-2 left-2 xl:left-6 2xl:left-12 -rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(101,56,151,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute top-8 left-2 xl:left-8 2xl:left-14 -rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(101,56,151,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#653897] to-[#431D70] text-white font-bold flex items-center justify-center shrink-0 shadow-sm text-xs">
               SJ
@@ -93,11 +137,11 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Card 2: Upper-Mid-Left (Swung further outward to the left edge) */}
+          {/* Card 2: Lower-Left (Direct Inbound Booking) */}
           <motion.div 
-            animate={{ y: [0, -10, 0], x: [0, -4, 0] }}
+            animate={{ y: [0, 9, 0], x: [0, -4, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -left-3 xl:left-0 2xl:left-6 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-violet-50 shadow-[0_14px_36px_rgba(101,56,151,0.11)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute bottom-10 left-0 xl:left-6 2xl:left-12 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-violet-50 shadow-[0_14px_36px_rgba(101,56,151,0.11)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <div className="relative shrink-0">
               <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-sm">
@@ -116,50 +160,15 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Card 3: Lower-Mid-Left (Tucked slightly inward towards bottom center) */}
-          <motion.div 
-            animate={{ y: [0, 11, 0], x: [0, 4, 0] }}
-            transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
-            className="hidden xl:flex items-center gap-2.5 absolute top-[55%] left-3 xl:left-8 2xl:left-14 -rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-emerald-50 shadow-[0_12px_32px_rgba(16,185,129,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
-          >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <DollarSign className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1 mb-0.5">
-                <span className="text-[11px] font-bold text-slate-900">Revenue Milestone</span>
-                <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">+340%</span>
-              </div>
-              <p className="text-[10px] text-slate-600 leading-snug">
-                &ldquo;<span className="font-bold text-slate-900">$48,500</span> in qualified pipeline! 💰&rdquo;
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Card 4: Bottom-Left (Swung outward at bottom corner) */}
-          <motion.div 
-            animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
-            transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="hidden lg:flex items-center gap-2 absolute bottom-2 left-0 xl:left-2 2xl:left-8 rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-violet-100/80 shadow-[0_10px_28px_rgba(101,56,151,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#653897] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#653897]"></span>
-            </span>
-            <span className="text-[10.5px] font-bold text-slate-800 whitespace-nowrap">
-              ⚡ 24 Qualified Meetings Booked
-            </span>
-          </motion.div>
-
           {/* ========================================================
-              RIGHT COLUMN: 4 FLOATING CARDS (STAGGERED ORBITAL ALIGNMENT)
+              RIGHT COLUMN: 2 FLOATING CARDS (CLEAN & MINIMAL)
               ======================================================== */}
           
-          {/* Card 5: Top-Right (Tilted gently, inset top corner) */}
+          {/* Card 3: Top-Right (Speed & Conversion) */}
           <motion.div 
-            animate={{ y: [0, 12, 0], x: [0, -5, 0] }}
+            animate={{ y: [0, 10, 0], x: [0, -4, 0] }}
             transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-2 right-2 xl:right-6 2xl:right-12 rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute top-8 right-2 xl:right-8 2xl:right-14 rotate-2 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100/90 shadow-[0_12px_32px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-sm">
               <Zap className="w-3.5 h-3.5 fill-white text-white" />
@@ -175,11 +184,11 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Card 6: Upper-Mid-Right (Swung further outward to the right edge) */}
+          {/* Card 4: Lower-Right (Deliverability Shield) */}
           <motion.div 
-            animate={{ y: [0, 9, 0], x: [0, 5, 0] }}
+            animate={{ y: [0, -9, 0], x: [0, 4, 0] }}
             transition={{ duration: 5.0, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-            className="hidden lg:flex items-center gap-2.5 absolute top-[27%] -right-3 xl:right-0 2xl:right-6 -rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100 shadow-[0_14px_36px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
+            className="hidden lg:flex items-center gap-2.5 absolute bottom-10 right-0 xl:right-6 2xl:right-12 -rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-slate-100 shadow-[0_14px_36px_rgba(15,23,42,0.07)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
           >
             <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
               <TrendingUp className="w-4 h-4 text-white" />
@@ -193,44 +202,6 @@ export default function Hero() {
                 &ldquo;SPF, DKIM & DMARC zero-spam shield active! 🛡️&rdquo;
               </p>
             </div>
-          </motion.div>
-
-          {/* Card 7: Lower-Mid-Right (Tucked slightly inward towards bottom center) */}
-          <motion.div 
-            animate={{ y: [0, -10, 0], x: [0, -4, 0] }}
-            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            className="hidden xl:flex items-center gap-2.5 absolute top-[55%] right-3 xl:right-8 2xl:right-14 rotate-1 hover:rotate-0 bg-white/95 backdrop-blur-xl border border-amber-50 shadow-[0_12px_32px_rgba(245,158,11,0.09)] rounded-2xl p-3 text-left w-[220px] xl:w-[245px] 2xl:w-[260px] z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
-          >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <Sparkles className="w-4 h-4 fill-white text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1 mb-0.5">
-                <span className="text-[11px] font-bold text-slate-900">Positive Reply Rate</span>
-                <span className="text-[9px] text-amber-600 font-bold bg-amber-50 px-1 rounded">+24.8%</span>
-              </div>
-              <p className="text-[10px] text-slate-600 leading-snug">
-                &ldquo;Human-led personalization outperforming bots! 🎯&rdquo;
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Card 8: Bottom-Right (Swung outward at bottom corner) */}
-          <motion.div 
-            animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
-            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            className="hidden lg:flex items-center gap-2 absolute bottom-2 right-0 xl:right-2 2xl:right-8 -rotate-2 hover:rotate-0 bg-white/90 backdrop-blur-xl border border-amber-100/80 shadow-[0_10px_28px_rgba(245,158,11,0.09)] rounded-full px-3 py-1.5 z-20 pointer-events-auto hover:scale-105 transition-all duration-300"
-          >
-            <div className="flex text-amber-400">
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-            </div>
-            <span className="text-[10.5px] font-bold text-slate-800 whitespace-nowrap">
-              5.0 Star Agency Rating
-            </span>
           </motion.div>
 
           {/* Ambient Frosted Floating Bubbles */}
@@ -298,10 +269,12 @@ export default function Hero() {
             >
               Build Your Pipeline. <br className="hidden sm:inline" />
               Book More Qualified Meetings. <br className="hidden sm:inline" />
-              <span className="relative inline-block mt-1">
+              <span className="relative inline-block mt-1 min-h-[1.25em]">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#653897] via-violet-600 to-[#431D70] font-black">
-                  Build a Powerful Website.
+                  {displayedText}
                 </span>
+                {/* Blinking Typewriter Cursor */}
+                <span className="inline-block w-[3px] h-[0.9em] bg-[#653897] ml-1.5 align-middle rounded-full animate-pulse shadow-[0_0_8px_rgba(101,56,151,0.6)]" />
                 <span className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#653897]/0 via-violet-500/60 to-[#431D70]/0" />
               </span>
             </motion.h1>
@@ -337,21 +310,7 @@ export default function Hero() {
                 </div>
               </a>
 
-              {/* 2. Cold Email Engine */}
-              <a 
-                href="#services" 
-                className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
-              >
-                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/20 group-hover:scale-105 transition-transform shrink-0">
-                  <Mail className="w-3.5 h-3.5 text-white" />
-                </div>
-                <div className="text-left min-w-0">
-                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Cold Email Engine</span>
-                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">99% Inbox Delivery</span>
-                </div>
-              </a>
-
-              {/* 3. Instagram Engine */}
+              {/* 2. Instagram Engine */}
               <a 
                 href="#services" 
                 className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-pink-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
@@ -362,6 +321,20 @@ export default function Hero() {
                 <div className="text-left min-w-0">
                   <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Instagram Engine</span>
                   <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">Organic DM Funnels</span>
+                </div>
+              </a>
+
+              {/* 3. Cold Email Engine */}
+              <a 
+                href="#services" 
+                className="shrink-0 group flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-200/80 shadow-sm hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+              >
+                <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/20 group-hover:scale-105 transition-transform shrink-0">
+                  <Mail className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="block text-xs sm:text-[12.5px] font-extrabold text-slate-900 leading-tight whitespace-nowrap">Cold Email Engine</span>
+                  <span className="text-[9.5px] text-slate-500 font-medium block whitespace-nowrap">99% Inbox Delivery</span>
                 </div>
               </a>
 

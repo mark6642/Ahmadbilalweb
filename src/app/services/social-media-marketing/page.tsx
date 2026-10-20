@@ -12,6 +12,7 @@ export default function SocialMediaMarketingPage() {
     <ServicePageLayout
       badge="Social Media Marketing & Authority"
       metricBadge="Compounding Inbound Reach • 3x Faster Trust Cycle"
+      image="/images/instagram-outreach.png"
       headline="Turn Executive Social Presence into an Inbound Demand-Generation Machine."
       subheadline="We architect and manage high-impact thought leadership content across LinkedIn, X (Twitter), and Meta. Transform your executive profile from an inactive resume into a magnet for high-ticket clients and strategic partnerships."
       problems={[

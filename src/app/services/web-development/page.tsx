@@ -12,6 +12,7 @@ export default function WebDevelopmentPage() {
     <ServicePageLayout
       badge="Web Development"
       metricBadge="Sub-1.0s Speed • 100% Core Web Vitals"
+      image="/images/web-development.png"
       headline="High-Performance Web Platforms Built to Convert Traffic into High-Ticket Clients."
       subheadline="We architect modern, sub-second web experiences and conversion funnels that position your firm as an undeniable market leader and systematically multiply inbound demos."
       problems={[
